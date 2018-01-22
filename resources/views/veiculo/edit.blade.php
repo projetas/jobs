@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="col-md-10 col-md-offset-1 container">
     <h1>Edit Vehicle: {{ $veiculo->modelo }} </h1>
 
@@ -64,8 +63,7 @@
             <option value="1">Usado</option>
         </select>
     </div>
-    
-    
+       
     
     <div class="form-group">
         <a href="{{ route('veiculo.index') }}" class="btn btn-warning">Back</a>

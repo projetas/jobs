@@ -10,6 +10,7 @@ class VeiculoController extends Controller
 {
     public function index() {
         $veiculos = Veiculo::all();
+        
         return view('veiculo.index')->withVeiculo($veiculos);
     }
 
@@ -29,6 +30,7 @@ class VeiculoController extends Controller
 
     public function edit($id) {
         $veiculo = Veiculo::find($id);
+        
         return view('veiculo.edit')->with('veiculo', $veiculo);
     }
 
@@ -48,13 +50,15 @@ class VeiculoController extends Controller
 
     public function destroy(Request $request, $id) {
         $veiculo = Veiculo::findOrFail($id);
+        
         $veiculo->delete();
+        
         return redirect()->route('veiculo.index');
     }
 
     public function show($id) {
-
         $veiculo = Veiculo::findOrFail($id);
+        
         return view('veiculo.show')->withVeiculo($veiculo);
     }
 }

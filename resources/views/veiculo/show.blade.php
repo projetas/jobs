@@ -10,8 +10,6 @@
 
     <hr>	
     
-    
-
     <a href="{{ route('veiculo.index') }}" class="btn btn-warning">Back</a>
     <a href="{{ route('veiculo.edit', $veiculo->id) }}" class="btn btn-primary">Edit</a>
 
