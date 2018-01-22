@@ -1,65 +1,80 @@
-# Especificação da Aplicação
+# CARful
+> RESTful API server for car registration
 
-Nós criamos esta pequena especificação para ajudá-lo a criar aplicativos incríveis e consistentes. As diretrizes e requisitos descritos abaixo fazem parte do nosso processo de desenvolvimento. Certifique-se de que não só leia, mas também a compreenda. 
+[![NPM Version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Downloads Stats][npm-downloads]][npm-url]
 
-_Observação:_ [Sócrates](https://en.wikipedia.org/wiki/Socrates) e [nós](http://projetas.com.br/) estamos ciente que ninguém sabe tudo, não se preocupe de não terminar toda a aplicação, faça o seu melhor, nos envie e divirta-se, ;-).
+My project is RESTful API server created using Maven, Spring Boot and Java. It is a Car API, where you can use HTTP Verbs to do CRUD operations in a resgister of cars. You can register information like:
 
-> Sócrates diz: Sábio é aquele que conhece os limites da própria ignorância.
+Brand;
+Model;
+Color;
+Year;
+Price;
+Description;
+IsNew;
+Time Register;
+Time Update;
 
-## README
+It consists only of the server, tests can be run with POSTman, sending json.
 
-Todos as aplicações devem incluir um README descrevendo a estrutura, a implementação geral e o processo de compilação, se necessário. Existe um [exemplo de readme](README.template.md) como ponto de partida.
+![](../header.png)
 
-## Código
+## Install
 
-Certifique-se de seguir estas diretrizes:
+OS X & Linux:
+Download Maven from:
+https://maven.apache.org/download.cgi
 
-* Siga o algum [estilo de código](https://en.wikipedia.org/wiki/Programming_style), de preferência o oficial da própria linguagem/framework.
-* Escreva código em inglês.
-* Use algum [gerenciador de pacotes](https://en.wikipedia.org/wiki/Package_manager) para dependências de terceiros, se necessário.
-* Organize o código de acordo com as melhores práticas da linguagem/framework e padrões de projetos.
-* Cobertura de testes (unitários, integrados):
-  * Entrega com no mínimo 80% de cobertura dos testes;
-  * Menos que 20% de duplicação de código;
-  * Nenhum defeito, vulnerabilidade, débito técnico ou fator de complexidade de código alta;
-* Mantenha simples o código (KISS).
-* Atenção na extensibilidade e manutenibilidade do código:
-* Exigimos que as aplicações funcionem em plataformas com arquitetura x86 e sistemas operacionais, tais como: Microsoft Windows, macOS e Linux.
+extract using
 
-## Funcionalidades
+```sh
+tar xzvf apache-maven-3.5.2-bin.tar.gz
+```
+Add the bin directory of the created directory apache-maven-3.5.2 to the PATH environment variable using
 
-Crie uma aplicação (cliente e servidor) de cadastro de veículos. O servidor deve expor uma [API](https://en.wikipedia.org/wiki/Application_programming_interface) onde o cliente irá acessar essa API para compor um [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) de uma entidade `Veículo`.
+```sh
+export PATH=/opt/apache-maven-3.5.2/bin:$PATH
+```
+go to project directory and run
+```sh
+mvn spring-boot:run
+```
+The application will start...
 
-#### Atributos do Veículo
+Windows:
 
-* Marca, texto, não nulo, 40 caracteres;
-* Modelo, texto, não nulo, 50 caracteres, 
-* Cor, texto, não nulo, 30 caracteres;
-* Ano, inteiro positivo, não nulo;
-* Preço, decimal positivo, não nulo;
-* Descrição, texto;
-* É novo?, boleano, não nulo;
-* Data de cadastro, data e hora, não nulo;
-* Data de atualização, data e hora, nulo.
+Download Maven from:
+https://maven.apache.org/download.cgi
 
-## Instruções
+extract from the zip file
 
-* Utilize a tecnologia de sua escolha (sempre seguindo as diretrizes de código).
-* Se caso, o candidato não tenha domínios do `cliente` ou do `servidor`, faça apenas um deles. Se necessário, utilize algum tipo de simulação (mock) para o funcionamento da aplicação.
-* Faça a [cópia](https://help.github.com/articles/fork-a-repo/) do repositório (fork), desenvolva e submeta uma [solicitação de mudança](https://help.github.com/articles/creating-a-pull-request/) (pull request) contra o ramo mestre padrão (master). 
-* [Squash](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing) seus compromissos (commits). 
-* Escreva uma descrição convincente de sua solicitação de mudança (pull request) de acordo com o guia [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
+Add the bin directory of the created directory apache-maven-3.5.2 to the PATH environment variable
 
-## Referências
+```sh
+Adding to PATH: Add the unpacked distribution’s bin directory to your user PATH environment variable by opening up the system properties (WinKey + Pause), selecting the “Advanced” tab, and the “Environment Variables” button, then adding or selecting the PATH variable in the user variables with the value C:\Program Files\apache-maven-3.5.2\bin. 
+```
+go to project directory and run
+```sh
+mvn spring-boot:run
+```
+The application will start...
 
-* [git - the simple guide](https://rogerdudler.github.io/git-guide/)
-* [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
-* [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet)
-* [A curated list of awesome READMEs](https://github.com/matiassingers/awesome-readme)
-* [README.md template for your open-source project](https://github.com/dbader/readme-template)
-* [Learn REST: A RESTful Tutorial](http://www.restapitutorial.com/)
-* [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
-* [Roy Fielding on Versioning, Hypermedia, and REST](https://www.infoq.com/articles/roy-fielding-on-versioning)
-* [10 Best Practices for Better RESTful API](https://blog.mwaysolutions.com/2014/06/05/10-best-practices-for-better-restful-api/)
-* [Best RPC Programming Practices](https://msdn.microsoft.com/en-us/library/windows/desktop/aa373563(v=vs.85).aspx)
-* [Best practices for service interface design in SOA](https://www.ibm.com/developerworks/library/ar-servdsgn1/)
+## Histórico de lançamentos
+
+* 1.0.0 RESTful API server
+
+## Meta
+
+Miguel Juvencio – miguelhjfreitas@gmail.com
+
+Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
+
+[https://github.com/miguelhjfreitas/github-link](https://github.com/miguelhjfreitas/)
+
+[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/datadog-metrics
+[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
