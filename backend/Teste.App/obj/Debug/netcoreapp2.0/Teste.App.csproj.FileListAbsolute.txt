@@ -1,0 +1,11 @@
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\bin\Debug\netcoreapp2.0\Teste.App.deps.json
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\bin\Debug\netcoreapp2.0\Teste.App.dll
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\bin\Debug\netcoreapp2.0\Teste.App.pdb
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\bin\Debug\netcoreapp2.0\Teste.Domain.dll
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\bin\Debug\netcoreapp2.0\Teste.Domain.pdb
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\obj\Debug\netcoreapp2.0\Teste.App.csprojResolveAssemblyReference.cache
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\obj\Debug\netcoreapp2.0\Teste.App.csproj.CoreCompileInputs.cache
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\obj\Debug\netcoreapp2.0\Teste.App.AssemblyInfoInputs.cache
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\obj\Debug\netcoreapp2.0\Teste.App.AssemblyInfo.cs
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\obj\Debug\netcoreapp2.0\Teste.App.dll
+C:\Users\pedro.ferreira\Desktop\dev\backendneppo\Teste.App\obj\Debug\netcoreapp2.0\Teste.App.pdb

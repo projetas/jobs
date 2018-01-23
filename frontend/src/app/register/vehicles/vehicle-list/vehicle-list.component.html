@@ -1,0 +1,51 @@
+<app-headbar></app-headbar>
+<section class="hero is-primary is-fullheight">
+    <section class="section">
+        <div class="container">
+          <div class="heading animated fadeIn">
+            <h1 class="title">Veículos</h1>
+            <h2 class="subtitle">
+              Lista de veículos
+            </h2>
+          <br>
+          <p class="has-text-right">
+            <button [routerLink]="['/endereco']" class="button is-success is-large animated pulse infinite">
+                <i class="fa fa-check">&nbsp;&nbsp;Cadastrar</i></button>
+              </p> 
+          </div> 
+          
+          <table class="table is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <th class="has-text-centered">CÓDIGO</th>
+                <th class="has-text-centered">MARCA</th>
+                <th class="has-text-centered">MODELO</th>
+                <th class="has-text-centered">COR</th>
+                <th class="has-text-centered">ANO</th>
+                <th class="has-text-centered">PREÇO</th>
+                <th class="has-text-centered">DESCRIÇÃO</th>
+                <th class="has-text-centered">É NOVO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vehicle of vehicleList">
+                <td class="has-text-centered">{{vehicle.id}}</td>
+                <td class="has-text-centered">{{vehicle.brand}}</td>
+                <td class="has-text-centered">{{vehicle.model}}</td>
+                <td class="has-text-centered">{{vehicle.color}}</td>
+                <td class="has-text-centered">{{vehicle.year}}</td>
+                <td class="has-text-centered">{{vehicle.price}}</td>
+                <td class="has-text-centered">{{vehicle.description}}</td>
+                <td class="has-text-centered">{{vehicle.is_new}}</td>
+                <td class="has-tex-centered"><a class="button is-info is-outlined is-small is-striped" 
+                [routerLink]="['/vehicle', vehicle.id]">Atualizar</a></td>
+                <td class="has-tex-centered"><a class="button is-small is-danger is-outlined" (click)="excluirVehicle(vehicle)">Remover</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+</section>
+<app-footer></app-footer>
+
