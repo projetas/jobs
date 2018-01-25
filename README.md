@@ -15,7 +15,7 @@ for the purpose of registering, editing, deleting and listing Vehicles with as e
 Year, Price, Description, Type (New or Used), Registration Data and Data update.
 
 
-## Intalation
+## Instalation
 
 > Linux, Windows & OS X:
 
