@@ -1,0 +1,202 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Veículo</h1>
+    <p class="lead">
+        Incluir novo veículo
+    </p>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/App/vehicle-controller.js"></script>
+}
+
+<div ng-app="mainApp" ng-controller="vehicleCtrl">
+
+    <fieldset>
+        <legend>Novo</legend>
+
+        <form name="myForm">
+
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <div class="alert alert-success" role="alert" ng-show="sucessoShow">
+                        <p>Veículo salvo com sucesso!</p>
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" ng-show="errosShow">
+                        <p ng-repeat="x in erros">{{x}}</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-xs-4">
+                    <label for="brand">Marca:</label>
+                    <input ng-model="vehicle.brand"
+                           class="form-control"
+                           id="brand"
+                           name="brand"
+                           type="text"
+                           ng-required="true"
+                           ng-maxlength="40">
+                </div>
+
+                <div class="form-group col-xs-4">
+                    <label for="model">Modelo:</label>
+                    <input ng-model="vehicle.model"
+                           class="form-control"
+                           id="model"
+                           name="model"
+                           type="text"
+                           ng-required="true"
+                           ng-maxlength="50">
+                </div>
+
+                <div class="form-group col-xs-4">
+                    <label for="model">Cor:</label>
+                    <input ng-model="vehicle.color"
+                           class="form-control"
+                           id="color"
+                           name="color"
+                           type="text"
+                           ng-required="true"
+                           ng-maxlength="30">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-xs-4">
+                    <label for="year">Ano:</label>
+                    <input ng-model="vehicle.year"
+                           class="form-control"
+                           id="year"
+                           name="year"
+                           type="number"
+                           ng-required="true">
+                </div>
+
+                <div class="form-group col-xs-4">
+                    <label for="price">Preço:</label>
+                    <input ng-model="vehicle.price"
+                           class="form-control"
+                           id="price"
+                           name="price"
+                           type="number"
+                           ng-required="true">
+                </div>
+
+                <div class="form-group col-xs-4">
+
+                    <label>&nbsp;&nbsp;</label>
+
+                    <div class="checkbox">
+                        <label>
+                            <input ng-model="vehicle.isNew" type="checkbox"> Veículo novo?
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-xs-12">
+                    <label for="description">Descrição:</label>
+                    <textarea ng-model="vehicle.description" class="form-control" id="description" row="3"></textarea>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <button type="button" class="btn btn-default" ng-click="save()">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="row">
+
+            <div class="col-xs-12">
+
+                <fieldset>
+                    <legend>Veículos</legend>
+
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Marca</th>
+                                    <th>Modelo</th>
+                                    <th>Cor</th>
+                                    <th>Ano</th>
+                                    <th>Preco</th>
+                                    <th>Novo?</th>
+                                    <th>Ação</th>
+                                </tr>
+                                <tr ng-repeat="x in vehicles">
+                                    <td>{{x.brand}}</td>
+                                    <td>{{x.model}}</td>
+                                    <td>{{x.color}}</td>
+                                    <td>{{x.year}}</td>
+                                    <td>{{x.price}}</td>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input ng-model="x.isNew" type="checkbox" class="disabled" disabled="disabled">
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning" ng-click="edit(x)">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" ng-click="confirmDelete(x)"
+                                                data-toggle="modal" data-target="#confirmModal">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+            </div>
+        </div>
+
+    </fieldset>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Confirmar exclusão</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir o veículo {{vehicleDelete.brand}} - {{vehicleDelete.model}} ({{vehicleDelete.year}})?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="delete(vehicleDelete.id)">SIM!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
