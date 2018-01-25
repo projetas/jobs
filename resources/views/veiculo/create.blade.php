@@ -4,6 +4,7 @@
 <div class="col-md-10 col-md-offset-1 container">
 
     <h1 class="text-primary">Create new Vehicle</h1>
+    
     <hr>
     
     {!! Form::open(array('route' => 'veiculo.store', 'class' => 'form')) !!}
@@ -27,26 +28,23 @@
         array('required', 
         'class'=>'form-control', 
         'placeholder'=>'Model')) !!}
-    </div>
-    
+    </div>    
     
     <div class="form-group">                
         <select name="cor" class="form-control">               
-            <option value="Preto">Preto</option>            
-            <option value="Prata">Prata</option>
-            <option value="Vermelho">Vermelho</option>
-            <option value="Azul">Azul</option>
+            <option value="Black">Black</option>            
+            <option value="Grey">Grey</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
         </select>
-    </div>
-    
+    </div>    
     
     <div class="form-group">			
         {!! Form::text('ano', null, 
         array('required', 
         'class'=>'form-control', 
         'placeholder'=>'Year')) !!}
-    </div>
-    
+    </div>    
     
     <div class="form-group">			
         {!! Form::text('preco', null, 
@@ -64,12 +62,11 @@
     
      <div class="form-group">                
         <select name="tipo" class="form-control">                  
-            <option value="0">Novo</option>            
-            <option value="1">Usado</option>
+            <option value="0">New</option>            
+            <option value="1">Used</option>
         </select>
     </div>
-    
-    
+        
     <hr>
 
     <div class="form-group">
@@ -78,10 +75,8 @@
         array('class'=>'btn btn-primary')) !!}
 
     </div>
-
-
+    
     {!! Form::close() !!}
-
 </div>
 
 

@@ -9,10 +9,12 @@
             <tr>
                 <th class="text-center">Id</th>
                 <th class="text-center">Brand</th>                                         
+                <th class="text-center">Model</th>    
                 <th class="text-center">Color</th>                                         
                 <th class="text-center">Year</th>
                 <th class="text-center">Price</th>
                 <th class="text-center">Type</th>
+                <th class="text-center">Description</th>
             </tr>
         </thead>
         <tbody>
@@ -20,10 +22,12 @@
             <tr>			
                 <td class="text-center">{{ $veiculo->id }}</td>
                 <td class="text-center">{{ $veiculo->marca }}</td>
+                <td class="text-center">{{ $veiculo->modelo }}</td>                 
                 <td class="text-center">{{ $veiculo->cor }}</td>
                 <td class="text-center">{{ $veiculo->ano }}</td>
                 <td class="text-center">{{ $veiculo->preco }}</td>
                 <td class="text-center">{{ $veiculo->tipo }}</td>
+                <td class="text-center">{{ $veiculo->descricao }}</td>
                 <td class="text-center">														
                     <a href="{{ route('veiculo.show', $veiculo->id) }}" class="btn btn-info">View Detail</a>
                 </td>							

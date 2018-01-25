@@ -19,10 +19,8 @@ class VeiculoController extends Controller
     }
 
     public function store(Request $request) {
-        $input = $request->all();
-        
+        $input = $request->all();        
         $create_at = Carbon::now()->toDateTimeString();
-
         Veiculo::create($input, $create_at);            
         
         return redirect()->route('veiculo.index');
@@ -35,22 +33,15 @@ class VeiculoController extends Controller
     }
 
     public function update($id, Request $request) {
-        $veiculo = Veiculo::findOrFail($id);
-        
-        /*
-            $this->validate($request, [
-                'nome' => 'required',
-            ]);        
-        */
-
+        $veiculo = Veiculo::findOrFail($id);  
         $input = $request->all();   
         $veiculo->fill($input)->save();
+        
         return redirect()->route('veiculo.index');
     }
 
     public function destroy(Request $request, $id) {
-        $veiculo = Veiculo::findOrFail($id);
-        
+        $veiculo = Veiculo::findOrFail($id);        
         $veiculo->delete();
         
         return redirect()->route('veiculo.index');
