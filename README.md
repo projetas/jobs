@@ -18,10 +18,6 @@ Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado
 
 Foram desenvolvidos alguns testes unitários, estão no projeto CarpProg.API.Tests
 
-```sh
-make install
-npm test
-```
 
 ## Histórico de lançamentos
 
