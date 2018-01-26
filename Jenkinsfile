@@ -4,8 +4,8 @@ DATETIME = (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())
 
 PROJECT_NAME = "jobs"
 
-SONAR_PROJECT_NAME = "projetas/jobs"
-SONAR_PROJECT_KEY = "projetas:jobs"
+SONAR_PROJECT_NAME = "mfgmateus/jobs"
+SONAR_PROJECT_KEY = "mfgmateus:jobs"
 
 PROJECT_ENV = "DEVELOPMENT"
 PROJECT_VERSION = "${env.BRANCH_NAME}-${BUILD_ID}"
@@ -53,6 +53,9 @@ def codeAnalysis() {
                     "-Dsonar.sources=. " +
                     "-Dsonar.sourceEncoding=UTF-8 " +
                     "-Dsonar.tests=. " +
+                    "-Dsonar.github.pullRequest=1" +
+                    "-Dsonar.github.repository=${SONAR_PROJECT_NAME}" +
+                    "-Dsonar.github.oauth= ${env.GITHUB_CREDENTIALS}" +
                     "-Dsonar.test.inclusions=**/*Test*/** " +
                     "-Dsonar.exclusions=**/*Test*/**")
             } 
