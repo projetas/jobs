@@ -1,0 +1,85 @@
+<section id="usuarios" class="sb-conteiner">
+    <div class="card">
+        <div class="card-header">
+            <h2>Vehicle Search</h2>
+        </div>
+        <div class="card-body card-padding">
+            <form [formGroup]="searchForm">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="ha-search">
+                            <div class="fg-line">
+                                <label>Model</label>
+                                <input type="text" formControlName="model" (keyup)=search() class="form-control" placeholder="Model Vehicle" />
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="col-sm-6">
+                        <div class="ha-search">
+                            <div class="fg-line">
+                                <label>{{'banner_label_situacao' | properties}}</label>
+                                <div>
+                                    <md-select placeholder="{{'app_selecionar' | properties}}" floatPlaceholder="never" (change)="pesquisar()" formControlName="situacao" style="width: 100%;">
+                                        <md-option>{{'app_selecionar' | properties}}</md-option>
+                                        <md-option *ngFor="let item of situacoes" [value]="item.id">
+                                            {{ item.nome }}
+                                        </md-option>
+                                    </md-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </form>
+            <br/>
+            <a class="btn btn-primary" [routerLink]="['/vehicle/new']">Novo vehicle</a>
+        </div>
+    </div>
+</section>
+
+<section class="sb-conteiner">
+    <div class="mini-charts">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table id="vehicle" class=".sb-usuario table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Brand</th>
+                                <th>Year</th>
+                                <th>New</th>
+                                <th>Price</th>
+                                <th>Date Register</th>
+                                <th>action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let vehicle of vehicles">
+                                <td>{{vehicle.model}}</td>
+                                <td>{{vehicle.brand}}</td>
+                                <td>{{vehicle.year}}</td>
+                                <td>{{vehicle.isNew}}</td>
+                                <td>{{vehicle.price | currency}}</td>
+                                <td>{{vehicle.register | date: 'dd/MM/y'}}</td>
+                                <td>
+                                    <button class="btn btn-xs btn-danger waves-effect"  (click)='delete(vehicle)'><i class="icon-close icons"></i></button>
+                                    <button class="btn btn-xs btn-primary waves-effect"  (click)='edit(vehicle)'><i class="icon-book-open icons"></i></button>
+                                    <!--<button class="btn btn-xs btn-primary waves-effect" (click)='edit(vehicle)'><i class="icon-book-open icons"></button>-->
+                                </td>
+                            </tr>
+                            <tr [hidden]="vehicles?.length > 0">
+                                <td colspan="6" style="text-align: center;">Nenhum Registro Encontrado.</td>
+                            </tr>
+                        </tbody>
+                        <!--<tfoot [hidden]="banners?.length <= 10">
+                            <td colspan="6" class="paginate-position">
+                                <mfBootstrapPaginator></mfBootstrapPaginator>
+                            </td>
+                        </tfoot>-->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
