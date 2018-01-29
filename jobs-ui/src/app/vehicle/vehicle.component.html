@@ -62,21 +62,21 @@
                   <div class="col-md-5">
                     <div class="form-group">
                       <mat-form-field>
-                        <input matInput placeholder="Brand" formControlName="brand">
+                        <input matInput placeholder="Brand" formControlName="brand" [required]="true">
                       </mat-form-field>
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group">
                       <mat-form-field>
-                        <input matInput placeholder="Model" formControlName="model">
+                        <input matInput placeholder="Model" formControlName="model" [required]="true">
                       </mat-form-field>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <mat-form-field>
-                        <input matInput placeholder="Year of Manufacture" formControlName="year">
+                        <input matInput placeholder="Year of Manufacture" formControlName="year" [required]="true">
                       </mat-form-field>
                     </div>
                   </div>
@@ -84,7 +84,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <mat-form-field>
-                      <input matInput placeholder="Price" formControlName="price">
+                      <input matInput placeholder="Price" formControlName="price" [required]="true">
                     </mat-form-field>
                   </div>
                   <div class="col-md-6">
@@ -111,12 +111,12 @@
                 <div class="row actions">
                   <div class="col-md-6">
                     <button type="button" rel="tooltip" title="Remove Vehicle" class="btn btn-danger pull-right"
-                            (click)="removeVehicle(vehicle.id)">
+                            (click)="removeVehicle(vehicle.id)" *ngIf="vehicle && vehicle.id">
                       <i class="material-icons">delete_forever</i> Remove
                     </button>
                   </div>
                   <div class="col-md-6">
-                    <button type="submit" rel="tooltip" title="Save Vehicle" class="btn btn-primary pull-right">
+                    <button type="submit" rel="tooltip" title="Save Vehicle" class="btn btn-primary pull-right" [disabled]="form.invalid">
                       <i class="material-icons">code</i> Save Vehicle
                     </button>
                   </div>
