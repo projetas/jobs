@@ -7,7 +7,7 @@
 
 Projeto exemplo de um CRUD de veículos, projeto feito em NodeJS e Angular, composto de back-end e front-end respectivamente.
 
-Plataformas / Framewroks
+Plataformas / Frameworks
 -------------------------
 * [**Angular**]('http://angular.io') **5.2.0**.
 * [**Material Angular**]('https://material.angular.io') **5.1.0**.
