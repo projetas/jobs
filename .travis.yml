@@ -3,6 +3,9 @@ node_js:
 - 8.9.1
 before_script:
 - cd jobs-sl
+script:
+- npm install
+- npm test
 after_success:
 - npm run coverage
 cache:
