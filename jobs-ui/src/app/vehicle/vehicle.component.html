@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 search">
+      <!--<mat-form-field hintLabel="Min 4 characters">-->
+      <mat-form-field>
+        <input matInput #input placeholder="Search vehicles" [formControl]="findVehicle">
+        <mat-icon matSuffix>search</mat-icon>
+        <!--<mat-hint align="end">{{input.value?.length || 0}}/4</mat-hint>-->
+      </mat-form-field>
+    </div>
+    <div class="col-lg-12 col-md-12">
+      <div class="card card-nav-tabs">
+        <div class="card-header" data-background-color="purple">
+          <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <span class="nav-tabs-title">Vehicles:</span>
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li [class.active]="!newOrUpdate">
+                  <a href="#" data-toggle="tab" (click)="listVehicles()">
+                    <i class="material-icons">directions_car</i> List
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+                <li [class.active]="newOrUpdate">
+                  <a href="#" data-toggle="tab" (click)="newVehicle(true)">
+                    <i class="material-icons">code</i> New
+                    <div class="ripple-container"></div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="tab-content">
+            <div class="tab-pane" [class.active]="!newOrUpdate" id="vehicles">
+              <table class="table">
+                <thead class="text-primary">
+                <tr>
+                  <th>Brand</th>
+                  <th>Model</th>
+                  <th>Year</th>
+                  <th>Cor</th>
+                  <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="tr-itens" *ngFor="let vehicle of (vehicles | async)?.results"
+                    (click)="onSelecetVehicle(vehicle.id)">
+                  <td>{{vehicle.brand}}</td>
+                  <td>{{vehicle.model}}</td>
+                  <td>{{vehicle.year}}</td>
+                  <td>{{vehicle.cor}}</td>
+                  <td class="text-primary">{{vehicle.price | currency}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tab-pane" [class.active]="newOrUpdate" id="new-vehicle">
+              <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <mat-form-field>
+                        <input matInput placeholder="Brand" formControlName="brand">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <mat-form-field>
+                        <input matInput placeholder="Model" formControlName="model">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <mat-form-field>
+                        <input matInput placeholder="Year of Manufacture" formControlName="year">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput placeholder="Price" formControlName="price">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput placeholder="Cor" formControlName="cor">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-checkbox formControlName="new">Novo?</mat-checkbox>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group form-container">
+                      <mat-form-field>
+                          <textarea matInput rows="5" placeholder="Description"
+                                    formControlName="description"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="row actions">
+                  <div class="col-md-6">
+                    <button type="button" rel="tooltip" title="Remove Vehicle" class="btn btn-danger pull-right"
+                            (click)="removeVehicle(vehicle.id)">
+                      <i class="material-icons">delete_forever</i> Remove
+                    </button>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="submit" rel="tooltip" title="Save Vehicle" class="btn btn-primary pull-right">
+                      <i class="material-icons">code</i> Save Vehicle
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12 col-md-12">
+      <mat-paginator [length]="(vehicles | async)?.totals || 0" [pageSize]="5"
+                     (page)="navegar($event)"></mat-paginator>
+    </div>
+  </div>
+</div>

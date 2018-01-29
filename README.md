@@ -1,65 +1,115 @@
-# Especificação da Aplicação
+# Cadastro de veículos
+> Aplicação (cliente e servidor) de cadastro de veículos.
 
-Nós criamos esta pequena especificação para ajudá-lo a criar aplicativos incríveis e consistentes. As diretrizes e requisitos descritos abaixo fazem parte do nosso processo de desenvolvimento. Certifique-se de que não só leia, mas também a compreenda. 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ismaelqueiroz/jobs.svg)](https://greenkeeper.io/)
+[![Build Status](https://secure.travis-ci.org/ismaelqueiroz/jobs.png)](http://travis-ci.org/ismaelqueiroz/jobs)
+[![Coverage Status](https://coveralls.io/repos/github/ismaelqueiroz/jobs/badge.svg)](https://coveralls.io/github/ismaelqueiroz/jobs)
 
-_Observação:_ [Sócrates](https://en.wikipedia.org/wiki/Socrates) e [nós](http://projetas.com.br/) estamos ciente que ninguém sabe tudo, não se preocupe de não terminar toda a aplicação, faça o seu melhor, nos envie e divirta-se, ;-).
+Projeto exemplo de um CRUD de veículos, projeto feito em NodeJS e Angular, composto de back-end e front-end respectivamente.
 
-> Sócrates diz: Sábio é aquele que conhece os limites da própria ignorância.
+Plataformas / Framewroks
+-------------------------
+* [**Angular**]('http://angular.io') **5.2.0**.
+* [**Material Angular**]('https://material.angular.io') **5.1.0**.
+* [**Express**]('https://express.io/') **4.16.2**.
+* [**Mocha**]('https://mochajs.org//') **4.1.0**.
+* [**Travis CI**]('https://travis-ci.org/').
+* [**Coveralls**]('https://coveralls.io/').
 
-## README
+## Instalação
 
-Todos as aplicações devem incluir um README descrevendo a estrutura, a implementação geral e o processo de compilação, se necessário. Existe um [exemplo de readme](README.template.md) como ponto de partida.
+Instalando dependência para o back-end e front-end, navegar nas pastas `jobs-sl` e `jobs-ui`, respectivamente e executar os procedimento abaixo:
 
-## Código
+OS X | Linux | Windows:
 
-Certifique-se de seguir estas diretrizes:
+```sh
+npm install
+```
 
-* Siga o algum [estilo de código](https://en.wikipedia.org/wiki/Programming_style), de preferência o oficial da própria linguagem/framework.
-* Escreva código em inglês.
-* Use algum [gerenciador de pacotes](https://en.wikipedia.org/wiki/Package_manager) para dependências de terceiros, se necessário.
-* Organize o código de acordo com as melhores práticas da linguagem/framework e padrões de projetos.
-* Cobertura de testes (unitários, integrados):
-  * Entrega com no mínimo 80% de cobertura dos testes;
-  * Menos que 20% de duplicação de código;
-  * Nenhum defeito, vulnerabilidade, débito técnico ou fator de complexidade de código alta;
-* Mantenha simples o código (KISS).
-* Atenção na extensibilidade e manutenibilidade do código:
-* Exigimos que as aplicações funcionem em plataformas com arquitetura x86 e sistemas operacionais, tais como: Microsoft Windows, macOS e Linux.
+## Exemplo de uso
 
-## Funcionalidades
+Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado. Adicione blocos de códigos e, se necessário, screenshots.
 
-Crie uma aplicação (cliente e servidor) de cadastro de veículos. O servidor deve expor uma [API](https://en.wikipedia.org/wiki/Application_programming_interface) onde o cliente irá acessar essa API para compor um [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) de uma entidade `Veículo`.
+## Testando
 
-#### Atributos do Veículo
+Navegar até a pasta jobs-sl, executar:
 
-* Marca, texto, não nulo, 40 caracteres;
-* Modelo, texto, não nulo, 50 caracteres, 
-* Cor, texto, não nulo, 30 caracteres;
-* Ano, inteiro positivo, não nulo;
-* Preço, decimal positivo, não nulo;
-* Descrição, texto;
-* É novo?, boleano, não nulo;
-* Data de cadastro, data e hora, não nulo;
-* Data de atualização, data e hora, nulo.
+```sh
+npm test
+```
 
-## Instruções
+## Executando back-end
 
-* Utilize a tecnologia de sua escolha (sempre seguindo as diretrizes de código).
-* Se caso, o candidato não tenha domínios do `cliente` ou do `servidor`, faça apenas um deles. Se necessário, utilize algum tipo de simulação (mock) para o funcionamento da aplicação.
-* Faça a [cópia](https://help.github.com/articles/fork-a-repo/) do repositório (fork), desenvolva e submeta uma [solicitação de mudança](https://help.github.com/articles/creating-a-pull-request/) (pull request) contra o ramo mestre padrão (master). 
-* [Squash](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing) seus compromissos (commits). 
-* Escreva uma descrição convincente de sua solicitação de mudança (pull request) de acordo com o guia [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
+Navegar até a pasta jobs-sl, executar:
 
-## Referências
+```sh
+npm start
+```
+Após execução com sucesso, o seguinte trecho de código será exibido:
 
-* [git - the simple guide](https://rogerdudler.github.io/git-guide/)
-* [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
-* [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet)
-* [A curated list of awesome READMEs](https://github.com/matiassingers/awesome-readme)
-* [README.md template for your open-source project](https://github.com/dbader/readme-template)
-* [Learn REST: A RESTful Tutorial](http://www.restapitutorial.com/)
-* [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
-* [Roy Fielding on Versioning, Hypermedia, and REST](https://www.infoq.com/articles/roy-fielding-on-versioning)
-* [10 Best Practices for Better RESTful API](https://blog.mwaysolutions.com/2014/06/05/10-best-practices-for-better-restful-api/)
-* [Best RPC Programming Practices](https://msdn.microsoft.com/en-us/library/windows/desktop/aa373563(v=vs.85).aspx)
-* [Best practices for service interface design in SOA](https://www.ibm.com/developerworks/library/ar-servdsgn1/)
+```shell
+> nodemon -e ts --exec ts-node ./server.ts
+
+[nodemon] 1.12.1
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching: *.*
+[nodemon] starting `ts-node ./server.ts`
+Server listening on http://localhost:8000
+Application ready to serve requests.
+Environment: development
+```
+O serviço está exposto no seguinte endereço: [http://localhost:8000](http://localhost:8000)
+
+Api's publicadas: 
+
+* GET /api/v1/vehicles
+* GET /api/v1/vehicles/{id}
+* POST /api/v1/vehicles
+* PUT /api/v1/vehicles
+* DELETE /api/v1/vehicles/{id}
+
+## Executando front-end
+
+Navegar até a pasta jobs-ui, executar:
+
+```sh
+npm start
+```
+Após execução com sucesso, o seguinte trecho de código será exibido:
+
+> ng serve
+
+```shell
+** NG Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **                                                         
+Hash: 73b7a45a8eb7618f1131
+Time: 12667ms
+chunk {inline} inline.bundle.js (inline) 5.79 kB [entry] [rendered]
+chunk {main} main.bundle.js (main) 80.8 kB [initial] [rendered]
+chunk {polyfills} polyfills.bundle.js (polyfills) 558 kB [initial] [rendered]
+chunk {scripts} scripts.bundle.js (scripts) 140 kB [initial] [rendered]
+chunk {styles} styles.bundle.js (styles) 162 kB [initial] [rendered]
+chunk {vendor} vendor.bundle.js (vendor) 16.2 MB [initial] [rendered]
+
+webpack: Compiled successfully.
+```
+
+Acesse a url em algum browser: [http://localhost:4200](http://localhost:4200)
+
+## Histórico de lançamentos
+
+* 1.0.0-alpha.1
+    * Primeira versão do projeto
+
+## Meta
+
+Ismael Queiroz – [@IsmaelQueiroz](https://twitter.com/isqueiroz) – ismaelqueiroz@gmail.com
+
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+
+[https://github.com/ismaelqueiroz/jobs](https://github.com/ismaelqueiroz/)
+
+[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/datadog-metrics
+[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
