@@ -18,17 +18,13 @@ Plataformas / Frameworks
 
 ## Instalação
 
-Instalando dependência para o back-end e front-end, navegar nas pastas `jobs-sl` e `jobs-ui`, respectivamente e executar os procedimento abaixo:
+Instalando dependência para o back-end e front-end, navegar nas pastas `jobs-sl` e `jobs-ui`, respectivamente e executar os procedimentos abaixo:
 
 OS X | Linux | Windows:
 
 ```sh
 npm install
 ```
-
-## Exemplo de uso
-
-Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado. Adicione blocos de códigos e, se necessário, screenshots.
 
 ## Testando
 
@@ -77,8 +73,6 @@ npm start
 ```
 Após execução com sucesso, o seguinte trecho de código será exibido:
 
-> ng serve
-
 ```shell
 ** NG Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **                                                         
 Hash: 73b7a45a8eb7618f1131
@@ -104,7 +98,7 @@ Acesse a url em algum browser: [http://localhost:4200](http://localhost:4200)
 
 Ismael Queiroz – [@IsmaelQueiroz](https://twitter.com/isqueiroz) – ismaelqueiroz@gmail.com
 
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+Distribuído sob a licença MIT.
 
 [https://github.com/ismaelqueiroz/jobs](https://github.com/ismaelqueiroz/)
 
