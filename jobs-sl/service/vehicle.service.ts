@@ -71,8 +71,12 @@ export class VehicleService extends BaseService {
             return Promise.reject(new BusinessErrorException('Mark of the vehicle is required, maximum length: 40!'));
         }
 
-        if (isNullOrUndefined(vehicle.model) || vehicle.model.length > 40) {
+        if (isNullOrUndefined(vehicle.model) || vehicle.model.length > 50) {
             return Promise.reject(new BusinessErrorException('Vehicle model is required, maximum length: 50!'));
+        }
+
+        if (isNullOrUndefined(vehicle.cor) || vehicle.cor.length > 30) {
+            return Promise.reject(new BusinessErrorException('Vehicle cor is required, maximum length: 30!'));
         }
 
         if (isNullOrUndefined(vehicle.price) || !isNumber(parseFloat(vehicle.price.toString()))) {

@@ -70,7 +70,7 @@ describe('Vehicles', function () {
 
     });
 
-    it('/POST: register a new vehicle without a price', (done) => {
+    it('/POST: register a new vehicle without a cor', (done) => {
         agent.post('/api/v1/vehicles')
             .set('Content-Type', 'application/json')
             .set('Accept-Language', 'pt-BR;en-US')
@@ -79,6 +79,25 @@ describe('Vehicles', function () {
                 {
                     'brand': 'Nissan',
                     'model': 'Sentra'
+                }
+            )
+            .expect(412)
+            .end((error: any) => {
+                done(error);
+            });
+
+    });
+
+    it('/POST: register a new vehicle without a price', (done) => {
+        agent.post('/api/v1/vehicles')
+            .set('Content-Type', 'application/json')
+            .set('Accept-Language', 'pt-BR;en-US')
+            .set('Accept', 'application/json')
+            .send(
+                {
+                    'brand': 'Nissan',
+                    'model': 'Sentra',
+                    'cor': 'Malbec Red'
                 }
             )
             .expect(412)
@@ -97,7 +116,8 @@ describe('Vehicles', function () {
                 {
                     'brand': 'Nissan',
                     'model': 'Sentra',
-                    'price': 100.95
+                    'cor': 'Malbec Red',
+                    'price': 100.95,
                 }
             )
             .expect(412)
@@ -116,6 +136,7 @@ describe('Vehicles', function () {
                 {
                     'brand': 'Nissan',
                     'model': 'Sentra',
+                    'cor': 'Malbec Red',
                     'price': 100.95,
                     'year': 2010
                 }
