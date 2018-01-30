@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- 8.9.1
+before_script:
+- cd jobs-sl
+script:
+- npm install
+- npm test
+after_success:
+- npm run coverage
+cache:
+  directories:
+  - node_modules
+notifications:
+  email:
+    on_success: always
+    on_failure: always
+  slack:
+    secure: RXWZDchGics38VeX9Q06uILdC5xpAY2QYx3i1uk8cPxiqA+UW3QJj/Dp83V455ZEYSwrZDh0jWexLPrHZp77vSZuswPbl6ozaaEP+sSCafhlHdw5tY6hcLH/MHbmfNjmXjczSq0QYyp0suTHOcOJ/iQ9d+4QEbgpjrx6VJpQ4Sa0wyLjHdTGGXch8DnNQBQmzFrYII9JMDk7ZeaKu6v/EpDwFccf55tCc2RDWmNcxtlTkY/k+Xw4wlxWhb+3TK9WWwv3rr7soMnb8V6/bz6VzVy2QtsvdTrwtCsK4g6XKviNkVPr9swYpNl15VhrNRpJNXNIhjiB7QE0CKkHYeKWeYhSFzj6BHLhIAwQ7hvyBQw1oYUNIGJoIDzC9xzuCBoyd5g3ebt1puNv47MmbkF/qZDub6bQld0OPDzNUCvl4Dh7dHYa1kIEOWTI0YOcGPhGzNaXEOQ8nvzC0UsigYkpDhl95xrKJfHVODxEI6FN97sggnj2NKgDU9G0vT6FXxIvdLSN4Ff4NXzT7/z68urNsU0HfEmuT6SjcOKNuvsFBKXHb2uvs2KQXxyfimMQhthKARpcoUrXvTAJ/SkOgdbg6Csgh03SkiEsLtFT36YxBrVEV7vEWsBjiDstvqH9ZM+ZunFSee1b2P7tFgEWh/CbogtaKzF4b4y1gpaupTN/7nI=

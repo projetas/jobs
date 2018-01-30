@@ -1,0 +1,55 @@
+.mat-paginator {
+  background: none;
+}
+
+.main-panel > .content {
+  margin-top: 50px !important;
+}
+
+.td-actions {
+  width: 30px;
+  display: table-cell;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container > * {
+  width: 100%;
+}
+
+tr.tr-itens {
+  cursor: pointer;
+}
+
+tr.tr-itens:hover {
+  color: #fff !important;
+  font-weight: bold !important;
+  background: linear-gradient(60deg, #ab47bc, #8e24aa);
+}
+
+tr.tr-itens:hover > td.text-primary,
+tr.tr-itens:hover > td.td-actions > button > i {
+  color: #fff !important;
+  font-weight: bold !important;
+}
+
+div.actions {
+  float: right;
+}
+
+div.actions > div {
+  padding-right: 10px;
+}
+
+div.search {
+  padding-bottom: 20px;
+}
+
+div.search > mat-form-field {
+  float: right;
+  width: 100%;
+}
