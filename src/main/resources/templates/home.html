@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="../static/css/materialize.min.css" th:href="@{/css/materialize.min.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+<div class="container">
+    <section>
+        <nav class="nav-extended" style="margin-top: 40px;padding-top: 10px">
+            <div class="nav-wrapper row">
+                <form id="formSearch">
+                    <div class="input-field col s6">
+                        <input id="search" placeholder="Find" type="search" />
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+                <h4 class="center-align col s6">Simple CRUD</h4>
+            </div>
+            <div class="nav-content">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab"><a name="create" class="active" href="#create">Create</a></li>
+                    <li class="tab"><a name="list" href="#list">List</a></li>
+                    <li class="tab"><a name="find" onclick="$('input#search').focus()" href="#delete">Find</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="create" class="row">
+            <form id="formCreate" action="" method="POST" class="col s12 center-align">
+                <input type="hidden" name="id"/>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="brand" name="brand" type="text" class="validate" data-length="40" maxlength="40" required="required"/>
+                        <label for="brand">Brand</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="model" name="model" type="text" class="validate" data-length="50" maxlength="50" required="required"/>
+                        <label for="model">Model</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="color" name="color" type="text" class="validate" data-length="30" maxlength="30" required="required"/>
+                        <label for="color">Color</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="newModel" required="required">
+                            <option value="" disabled="disabled" selected="selected">Choose your option</option>
+                            <option value="true">Yes</option>
+                            <option value="false">Not</option>
+                        </select>
+                        <label>New</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="year" name="year" type="text" class="validate" maxlength="4" required="required"/>
+                        <label for="year">Year</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="price" name="price" type="text" class="validate" required="required"/>
+                        <label for="price">Price</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                        <label for="description">Description</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="yyyy/mm/dd" name="dateRegister" id="date-register" type="text" class="validate" minlength="10" maxlength="10" required="required"/>
+                        <label for="date-register">Date Register</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="yyyy/mm/dd" name="dateUpdate" id="date-update" type="text" class="validate" minlength="10" maxlength="10"/>
+                        <label for="date-update">Date Update</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">Save</button>
+            </form>
+        </div>
+
+        <div id="list" class="row">
+            <div class="col s12">
+                <ul class="collection with-header list">
+
+                </ul>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="../static/js/materialize.min.js" th:src="@{js/materialize.min.js}"></script>
+
+<script>
+    function deleteFunc(id) {
+        $.ajax({
+            method: "DELETE",
+            url: baseUrl + '/api/v1/vehicle/'+id,
+            contentType: "application/json",
+            dataType: "json",
+            async:false
+        });
+        window.location.reload();
+    }
+
+    function updateFunc(id) {
+        $.ajax({
+            method: "GET",
+            url: baseUrl + '/api/v1/vehicle/'+id,
+            async:false,
+            contentType: "application/json",
+            dataType: "json",
+            success : function(response) {
+                console.log("SUCCESS");
+                console.log(response);
+                $(".nav-content a[name='create']").click();
+                $("form input[name='id']").val(response.data.id);
+                $("form input[name='brand']").val(response.data.brand);
+                $("form input[name='model']").val(response.data.model);
+                $("form input[name='color']").val(response.data.color);
+                $("form input[name='year']").val(response.data.year);
+                $("form input[name='price']").val(response.data.price);
+                $("form textarea[name='description']").val(response.data.description);
+                $("form option[value="+response.data.newModel+"]").attr('selected','selected');
+                var data = new Date(response.data.dateRegister);
+                $("form input[name='dateRegister']").val(data.getFullYear()+"/"+(data.getMonth()+1)+"/"+data.getDate());
+                data = new Date(response.data.dateUpdate);
+                $("form input[name='dateUpdate']").val(data.getFullYear()+"/"+(data.getMonth()+1)+"/"+data.getDate());
+                Materialize.updateTextFields();
+                $('select').material_select();
+            },
+            error : function(response) {
+                console.log("ERROR");
+                console.log(response);
+            }
+        });
+
+    }
+
+    $(document).ready(function() {
+        baseUrl = 'http://localhost:8080';
+
+        $("form#formSearch").submit(function (event) {
+            var valor = $("form input[id=search]").val();
+            updateFunc(valor);
+            event.preventDefault();
+        });
+
+        $("form#formCreate").submit(function (event) {
+            event.preventDefault();
+            var vehicleObj = {id: $("form input[name='id']").val(),
+                            brand: $("form input[name='brand']").val(),
+                            model: $("form input[name='model']").val(),
+                            color: $("form input[name='color']").val(),
+                            year: $("form input[name='year']").val(),
+                            price: $("form input[name='price']").val(),
+                            description: $("form textarea[name='description']").val(),
+                            newModel: $("form option:selected").val(),
+                            dateRegister: new Date($("form input[name='dateRegister']").val()),
+                            dateUpdate: new Date($("form input[name='dateUpdate']").val())};
+            var form = this;
+            $.ajax({
+                method: "POST",
+                url: baseUrl + '/api/v1/vehicle',
+                async:false,
+                data: JSON.stringify(vehicleObj),
+                contentType: "application/json",
+                dataType: "json",
+                success : function(response) {
+                    console.log("SUCCESS");
+                    console.log(response);
+                    form.reset();
+                },
+                error : function(response) {
+                    console.log("ERROR");
+                    console.log(response);
+                }
+            });
+        });
+
+
+        $("li.tab a").click(function () {
+            var option = $(this).attr("name");
+            if(option.localeCompare('list') === 0){
+                var ul =$("ul.list");
+                ul.children().remove();
+                var res = null;
+                $.ajax({
+                    method: "GET",
+                    url: baseUrl + '/api/v1/vehicle/all',
+                    contentType: "application/json",
+                    dataType: "json",
+                    async:false,
+                    success : function(response) {
+                        console.log("SUCCESS");
+                        console.log(response);
+                        res = response;
+                    },
+                    error : function(response) {
+                        console.log("ERROR");
+                        console.log(response);
+                    }
+                });
+                for(i in res){
+                    var list = $('<li id="' + res[i].id+ '" class="collection-item"><div>' + res[i].id + " | " +res[i].brand + " | " + res[i].model +
+                        '<a href="#" onclick="deleteFunc(' +res[i].id+ ')" class="secondary-content"><i class="material-icons">delete</i></a>' +
+                        '<a href="#" onclick="updateFunc(' +res[i].id+ ')" class="secondary-content"><i class="material-icons">create</i></a></div></li>');
+                    ul.append(list);
+                }
+            }
+        });
+
+        $('select').material_select();
+    });
+</script>
+</body>
+</html>
