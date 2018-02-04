@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width" />
+	<title>Vehicle</title>
+	<link rel='stylesheet' href='../css/bootstrap.min.css'/>
+	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+	<form class="form-inline" style="margin: 20px 0">	
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Search Vehicle</h1>
+			</div>
+			<div class="panel-body table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Brand</th>
+							<th>Model</th>
+							<th>Color</th>
+							<th>Year</th>
+							<th>Price</th>
+							<th>Is new?</th>
+							<th>Date of Registration</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="vehicle : ${vehicles}">
+							<td th:text="${vehicle.brand}"></td>
+							<td th:text="${vehicle.model}"></td>
+							<td th:text="${vehicle.color}"></td>
+							<td th:text="${vehicle.year}"></td>
+							<td th:text="${vehicle.price}"></td>
+							<td th:text="${vehicle.new}"></td>
+							<td th:text="${vehicle.registrationDate}"></td>
+							<td>
+							  <a class="btn btn-sm btn-primary" th:href="@{/update/(id=${vehicle.id})}">Update</a>
+						    </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		    <div class="panel-footer">
+           	   <a class="btn btn-lg btn-success" th:href="@{/create}">Create</a>
+       	    </div>
+		</div>
+		
+	</form>
+</body>
+</html>
