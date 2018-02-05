@@ -6,16 +6,17 @@
 <meta name="viewport" content="width=device-width" />
 <title>Persist Vehicle</title>
 <link rel='stylesheet' href='../css/bootstrap.min.css' />
+<link rel='stylesheet' href='../css/main.css' />
 <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="panel panel-default" style="margin: 10px">
+	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h1 class="panel-title">Persist Vehicle</h1>
 		</div>
 		<div class="panel-body">
-			<form action="#" method="POST" style="margin: 20px 0"
+			<form action="#" method="POST"
 				th:object="${vehicle}" th:action="@{/}" class="form-horizontal">
 				<input th:field="*{id}" hidden="true">
 				<div class="form-group">

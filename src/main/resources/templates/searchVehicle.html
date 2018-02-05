@@ -6,12 +6,13 @@ xmlns:th="http://www.thymeleaf.org">
 	<meta name="viewport" content="width=device-width" />
 	<title>Vehicle</title>
 	<link rel='stylesheet' href='../css/bootstrap.min.css'/>
+	<link rel='stylesheet' href='../css/main.css' />
 	<script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 </head>
 <body>
-	<form class="form-inline" style="margin: 20px 0">	
-		<div class="panel panel-default" style="margin: 10px">
+	<form class="form-inline">	
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h1 class="panel-title">Search Vehicle</h1>
 			</div>
@@ -40,13 +41,14 @@ xmlns:th="http://www.thymeleaf.org">
 							<td th:text="${vehicle.registrationDate}"></td>
 							<td>
 							  <a class="btn btn-sm btn-primary" th:href="@{/update/(id=${vehicle.id})}">Update</a>
+						      <a class="btn btn-sm btn-danger" th:href="@{/delete/(id=${vehicle.id})}">Delete</a>
 						    </td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		    <div class="panel-footer">
-           	   <a class="btn btn-lg btn-success" th:href="@{/create}">Create</a>
+           	   <a class="btn btn-success" th:href="@{/create}">Create</a>
        	    </div>
 		</div>
 		

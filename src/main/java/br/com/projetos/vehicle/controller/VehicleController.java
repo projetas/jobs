@@ -3,10 +3,8 @@ package br.com.projetos.vehicle.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,22 +35,26 @@ public class VehicleController {
 	
 	@GetMapping("/update")
 	public ModelAndView update(@Param("id") String id) {
-		ModelAndView modelAndView = new ModelAndView("persistVehicle");
-		modelAndView.addObject(vehicleService.findById(Long.valueOf(id)));
-		return modelAndView;
+		return getPersistModelView(vehicleService.findById(Long.valueOf(id)));
 		
 	}
 	
 	@GetMapping("/create")
 	public ModelAndView create(){
-		ModelAndView modelAndView = new ModelAndView("persistVehicle");
-		modelAndView.addObject(new Vehicle());
-		return modelAndView;
+		return getPersistModelView(new Vehicle());
 	}
 	
-	@DeleteMapping("{id}")
-	void remove(@PathVariable Long id) {
+	@GetMapping("/delete")
+	String remove(@Param("id") Long id) {
 		vehicleService.deleteById(id);
+		return "redirect:/";
+	}
+	
+	private ModelAndView getPersistModelView(Vehicle vehicle){
+		ModelAndView modelAndView = new ModelAndView("persistVehicle");
+		modelAndView.addObject(vehicle);
+		
+		return modelAndView;
 	}
 
 }

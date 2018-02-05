@@ -36,6 +36,24 @@ public class VehicleService implements Serializable {
 			throw new RequiredException();
 		}
 		
+		validateFields(vehicle);
+		
+		return vericleRepository.saveAndFlush(vehicle);
+	}
+
+	public void deleteById(Long id) {
+		vericleRepository.deleteById(id);
+	}
+	
+	public Vehicle findById(Long id) {
+		return vericleRepository.getOne(id);
+	}
+
+	public List<Vehicle> findAll() {
+		return vericleRepository.findAll();
+	}
+	
+	public void validateFields(Vehicle vehicle){
 		try {
 			for (Field field : Vehicle.class.getDeclaredFields()) {
 				field.setAccessible(true);
@@ -58,19 +76,5 @@ public class VehicleService implements Serializable {
 		} catch (SecurityException | IllegalAccessException e) {
 			throw new RuntimeException("Houve um erro na validação dos campos.");
 		}
-		
-		return vericleRepository.saveAndFlush(vehicle);
-	}
-
-	public void deleteById(Long id) {
-		vericleRepository.deleteById(id);
-	}
-	
-	public Vehicle findById(Long id) {
-		return vericleRepository.getOne(id);
-	}
-
-	public List<Vehicle> findAll() {
-		return vericleRepository.findAll();
 	}
 }
