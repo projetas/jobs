@@ -1,0 +1,116 @@
+<app-headbar></app-headbar>
+<section class="hero is-primary is-fullheight">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <br>
+      <h1 class="title pacifico large-text">
+        Registrar Veículo
+      </h1>
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <form [formGroup]="vehicleForm">
+
+
+  
+              <div class="field is-horizontal">
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" type="text" placeholder="Modelo" [(ngModel)]="vehicleData.model" formControlName="model">
+                    </p>
+                    <p class="help is-danger" *ngIf="vehicleForm.controls['brand'].hasError('required') && vehicleForm.controls['brand'].touched">
+                      <strong>Campo obrigatório!</strong>
+                    </p>
+                  </div>
+                  <div class="field">
+                    <p class="control">
+                      <input required class="input" type="text" placeholder="Marca"
+                     [(ngModel)]="vehicleData.brand" formControlName="brand"
+                     required>
+                    </p>
+                    <p class="help is-danger" *ngIf="vehicleForm.controls['brand'].hasError('required') && vehicleForm.controls['brand'].touched">
+                      <strong>Campo obrigatório!</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field is-horizontal">
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" OnlyNumber type="text" placeholder="Ano"  [maxlength]="4" [(ngModel)]="vehicleData.year" formControlName="year">
+                    </p>
+                    <p class="help is-danger" *ngIf="vehicleForm.controls['year'].hasError('required') && vehicleForm.controls['year'].touched">
+                      <strong>Campo obrigatório!</strong>
+                    </p>
+                  </div>
+                  <div class="field">
+                      <p class="control">
+                        <input required class="input"  currencyMask type="text"
+                         placeholder="Preço" [(ngModel)]="inputPrice"
+                         formControlName="price" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+                      </p>
+                      <p class="help is-danger" *ngIf="vehicleForm.controls['price'].hasError('required') && vehicleForm.controls['price'].touched">
+                        <strong>Campo obrigatório!</strong>
+                      </p>
+                    </div>
+
+                  <div class="field">
+                    <p class="control">
+                      <input required class="input" type="text" placeholder="Cor" [(ngModel)]="vehicleData.color" formControlName="color">
+                    </p>
+                    <p class="help is-danger" *ngIf="vehicleForm.controls['color'].hasError('required') && vehicleForm.controls['color'].touched">
+                      <strong>Campo obrigatório!</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+           
+             
+
+              <div class="field">
+                <div class="control">
+                  <textarea class="textarea" [(ngModel)]="vehicleData.description" formControlName="description" placeholder="Descrição"></textarea>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <label class="checkbox">
+                    É um veículo novo?
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control" >
+                  <label class="radio">
+                    <input type="radio" name="is_new" formControlName="is_new" [value]="true" [(ngModel)]="vehicleData.is_new">
+                    Sim
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="is_new" formControlName="is_new" [value]="false" [(ngModel)]="vehicleData.is_new">
+                    Não
+                  </label>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <button [routerLink]="['/vehicleList']" style="margin-top: 10px; float: left!important; margin-left: 0px;" class="button is-dark is-inverted is-outlined is-fullwidth">Voltar</button>
+                </div>
+                <div class="column">
+                  <button type="submit" style="margin-top: 10px" class="button is-dark is-inverted is-outlined is-fullwidth" (click)="validContinue()"
+                    [disabled]="vehicleForm.invalid">Seguir</button>
+                </div>
+              </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<app-footer></app-footer>
