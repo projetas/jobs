@@ -1,13 +1,13 @@
 
 # Tecnologias
 
-*Backend
+*Backend -
 C#, EntityFramework, Rest, WebApi.
 
-*Frontend
+*Frontend -
 Asp.net WebForms, bootstrap, Jquery, Json.
 
-*Banco de dados
+*Banco de dados -
 SqlServer
 
 ## Funcionalidades
