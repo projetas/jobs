@@ -1,0 +1,4 @@
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Model\bin\Debug\Vehicle.Projetas.Model.dll
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Model\bin\Debug\Vehicle.Projetas.Model.pdb
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Model\obj\Debug\Vehicle.Projetas.Model.dll
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Model\obj\Debug\Vehicle.Projetas.Model.pdb

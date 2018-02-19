@@ -1,0 +1,11 @@
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\obj\Debug\Vehicle.Projetas.Dal.csprojResolveAssemblyReference.cache
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\bin\Debug\Vehicle.Projetas.Dal.dll
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\bin\Debug\Vehicle.Projetas.Dal.pdb
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\bin\Debug\EntityFramework.dll
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\bin\Debug\Vehicle.Projetas.Model.dll
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\bin\Debug\Vehicle.Projetas.Model.pdb
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\bin\Debug\EntityFramework.xml
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\obj\Debug\Vehicle.Projetas.Dal.dll
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\obj\Debug\Vehicle.Projetas.Dal.pdb
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projetos\Projetas\Vehicle.Projetas\Vehicle.Projetas.Dal\bin\Debug\EntityFramework.SqlServer.xml
