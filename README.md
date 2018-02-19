@@ -11,7 +11,9 @@ Asp.net WebForms, bootstrap, Jquery, Json.
 SqlServer
 
 -Crud generico EntityFramework.
+
 -EntityFramework code first como ORM, realizar um Update-Database para criação da tabela.
+
 -Alterar a string de conexão de nome "connectionString" no web.config com as informações do servidor atual.
 
 ## Funcionalidades
