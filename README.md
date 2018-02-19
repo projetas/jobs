@@ -12,7 +12,7 @@ SqlServer
 
 ## Funcionalidades
 
-Crud de uma aplicação (cliente e servidor) de cadastro de veículos. O servidor deve expor uma [API]
+Crud de uma aplicação (cliente e servidor) de cadastro de veículos. O servidor expoe uma [API] rest json.
 
 #### Atributos do Veículo
 
