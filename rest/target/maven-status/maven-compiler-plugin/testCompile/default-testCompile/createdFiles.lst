@@ -1,0 +1,4 @@
+br\com\rest\veiculo\repository\VehicleRepositoryTest.class
+br\com\rest\veiculo\controller\VehicleControllerTest.class
+br\com\rest\veiculo\VeiculoRestWebApplicationTests.class
+br\com\rest\veiculo\controller\VehicleControllerTest$Config.class
