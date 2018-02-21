@@ -14,7 +14,7 @@ Usuário: admin / Senha: admin (Permissão para as urls /admin)
 
 1- Entrar no diretorio raiz do projeto (Onde está o pom.xml) executar o comando: mvn clean install
 
-2 - Após o build ser finalizado com sucesso, rodar o seguinte comando: java -jar target/gs-accessing-data-mysql-0.1.0.jar
+2 - Após o build ser finalizado com sucesso, rodar o seguinte comando: java -jar target/veiculo-rest-1.0.jar
 
 Alternativa para instalação: 
 
@@ -42,7 +42,7 @@ http://localhost:8080/admin/vehicles/{cod}
 ## Configuração para Desenvolvimento
 
 mvn clean install
-java -jar target/gs-accessing-data-mysql-0.1.0.jar
+java -jar target/veiculo-rest-1.0.jar
 
 ## Meta
 
