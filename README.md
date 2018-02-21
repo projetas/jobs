@@ -48,6 +48,6 @@ java -jar target/gs-accessing-data-mysql-0.1.0.jar
 
 Fernando Henrique - fernandimgts@gmail.com
 
-Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
 [https://github.com/fernandohs1500/jobs](https://github.com/fernandohs1500/)
