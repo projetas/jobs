@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="ui-g">
+
+    <div class="ui-g-12">
+      <h1>Carros</h1>
+    </div>
+
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <p-dataTable [value]="cars" [responsive]="true"
+           emptyMessage="Nenhum carro encontrado">
+        <p-column field="marca" header="Marca"></p-column>
+        <p-column field="modelo" header="Modelo"></p-column>
+        <p-column field="cor" header="Cor"></p-column>
+        <p-column field="ano" header="Ano"></p-column>
+        <p-column field="preco" header="Preco"></p-column>
+        <p-column field="descricao" header="Descricão"></p-column>
+        <p-column field="novo" header="Novo">
+          <ng-template let-car="rowData" pTemplate="body">
+             {{ car.novo ? 'Sim' : 'Não' }}
+          </ng-template>
+        </p-column>
+
+        <p-column field="dataCadastro" header="Cadastro" styleClass="col-data"></p-column>
+        <p-column field="dataAtualizacao" header="Atualizacão" styleClass="col-data"></p-column>
+        <p-column styleClass="col-acoes">
+          <ng-template let-car="rowData" pTemplate="body">
+            <a pButton icon="fa-pencil"></a>
+            <button pButton icon="fa-trash"
+              (click)="excluir(car)"></button>
+          </ng-template>
+      </p-column>
+      </p-dataTable>
+
+    </div>
+
+    <div class="ui-g-12">
+      <a routerLink="/cars/novo" pButton label="Novo Carro"></a>
+    </div>
+
+  </div>
+
+</div>

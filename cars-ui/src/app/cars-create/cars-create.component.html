@@ -1,0 +1,77 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Novo Carro</h1>
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Marca</label>
+        <input pInputText type="text" name="marca" [(ngModel)]="car.marca" #ano="ngModel">
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Modelo</label>
+        <input pInputText type="text" name="modelo" [(ngModel)]="car.modelo" #ano="ngModel">
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Cor</label>
+        <input pInputText type="text" name="cor" [(ngModel)]="car.cor" #ano="ngModel">
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Ano</label>
+        <input pInputText type="text" name="ano" [(ngModel)]="car.ano" #ano="ngModel">
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Preço</label>
+        <input pInputText type="text" name="preco" placeholder="0,00"
+          currencyMask [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
+          [(ngModel)]="car.preco"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao"
+          [(ngModel)]="car.descricao"
+          #descricao="ngModel" required minlength="5">
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Novo</label>
+          <p-dropdown name="novo" [options]="novos"
+            placeholder="Selecione" [autoWidth]="false"
+            [(ngModel)]="novos.values"
+            required></p-dropdown>
+        </div>
+
+
+      <div class="ui-g-6 ui-md-3 ui-fluid">
+        <label>Cadastro</label>
+        <p-calendar name="dataCadastro" dateFormat="dd/mm/yy"
+          [inline]="false" [readonlyInput]="false" [showIcon]="false"
+          [(ngModel)]="car.dataCadastro"
+          #dataCadastro="ngModel" required></p-calendar>
+      </div>
+
+      <div class="ui-g-6 ui-md-3 ui-fluid">
+        <label>Atualização</label>
+        <p-calendar name="dataAtualizacao" dateFormat="dd/mm/yy"
+          [inline]="false" [readonlyInput]="false" [showIcon]="false"
+          [(ngModel)]="car.dataAtualizacao"
+          #dataCadastro="ngModel" required></p-calendar>
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info"></button>
+        <a routerLink="/cars">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>
