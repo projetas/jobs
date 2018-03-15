@@ -45,14 +45,8 @@ public class CarResource {
 	@PostMapping
 	public ResponseEntity<Car> createCar(@Valid @RequestBody Car car, HttpServletResponse response) {
 		Car carSaved = carRepository.save(car);
-		publisher.publishEvent(new NewResourceEvent(this, response, carSaved.getId()));
+		publisher.publishEvent(new NewResourceEvent(this, response, carSaved.getCod()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(carSaved);
-	}
-
-	@GetMapping("/{id}")
-	public ResponseEntity<Car> searchByCode(@PathVariable Long id) {
-		 Car car = carRepository.findOne(id);
-		 return car != null ? ResponseEntity.ok(car) : ResponseEntity.notFound().build();
 	}
 
 	@DeleteMapping("/{id}")

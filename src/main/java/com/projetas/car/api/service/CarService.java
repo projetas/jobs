@@ -14,15 +14,15 @@ public class CarService {
 	@Autowired
 	private CarRepository carRepository;
 
-	public Car updateCar(Long id, Car car) {
-		Car carSaved = searchByCode(id);
+	public Car updateCar(Long cod, Car car) {
+		Car carSaved = searchByCode(cod);
 
-		BeanUtils.copyProperties(car, carSaved, "id");
+		BeanUtils.copyProperties(car, carSaved, "cod");
 		return carRepository.save(carSaved);
 	}
 
-	private Car searchByCode(Long id) {
-		Car carSaved = carRepository.findOne(id);
+	private Car searchByCode(Long cod) {
+		Car carSaved = carRepository.findOne(cod);
 		if (carSaved == null) {
 			throw new EmptyResultDataAccessException(1);
 		}
