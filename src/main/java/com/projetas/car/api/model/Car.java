@@ -1,6 +1,5 @@
 package com.projetas.car.api.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -22,12 +21,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @lombok.EqualsAndHashCode
 @lombok.Setter
 @lombok.Getter
+@lombok.AllArgsConstructor
+@lombok.NoArgsConstructor
 @Entity
 @Table(name = "car")
-public class Car implements Serializable {
+public class Car {
 
-   private static final long serialVersionUID = 1L;
-	
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long cod;

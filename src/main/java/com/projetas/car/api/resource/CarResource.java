@@ -1,12 +1,12 @@
 package com.projetas.car.api.resource;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,8 +38,14 @@ public class CarResource {
 	private ApplicationEventPublisher publisher;
 
 	@GetMapping
-	public List<Car> listAllCars() {
-		return carRepository.findAll();
+	public Page<Car> listAllCars(Pageable pageable) {
+		return carRepository.findAll(pageable);
+	}
+
+	@GetMapping("/{cod}")
+	public ResponseEntity<Car> SearchByCode(@PathVariable Long cod) {
+		 Car car = carRepository.findOne(cod);
+		 return car != null ? ResponseEntity.ok(car) : ResponseEntity.notFound().build();
 	}
 
 	@PostMapping
@@ -49,15 +55,15 @@ public class CarResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(carSaved);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{cod}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void dropCar(@PathVariable Long id) {
-		carRepository.deleteById(id);
+	public void dropCar(@PathVariable Long cod) {
+		carRepository.delete(cod);
 	}
 
-	@PutMapping("/{id}")
-	public ResponseEntity<Car> updateCar(@PathVariable Long id, @Valid @RequestBody Car car) {
-		Car carSaved = carService.updateCar(id, car);
+	@PutMapping("/{cod}")
+	public ResponseEntity<Car> updateCar(@PathVariable Long cod, @Valid @RequestBody Car car) {
+		Car carSaved = carService.updateCar(cod, car);
 		return ResponseEntity.ok(carSaved);
 	}
 }

@@ -1,3 +1,5 @@
+truncate table car;
+ALTER TABLE car ALTER COLUMN cod RESTART WITH 1;
 insert into car 
 (cod,brand,model,color,year,description,new_car,creation_date,update_date,price)
 values 
