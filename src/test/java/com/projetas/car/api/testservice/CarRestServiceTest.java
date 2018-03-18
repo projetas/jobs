@@ -42,6 +42,20 @@ public class CarRestServiceTest {
 		return jsonResponse.getObject("",Car.class);
 	}
 	
+	public void updateNewCarProperty(Car carTest, int statusCode)
+	{
+		String updatePath = "/cars/" + carTest.getCod() + "/newcar";
+		
+		given()
+			.header("Accept","application/json")
+			.contentType("application/json")
+			.body(carTest.getNewCar())
+		.when()
+			.put(updatePath)
+		.then()
+			.statusCode(statusCode);
+	}
+	
 	public void checkStatusCodeForANewCar(Car carTest, int statusCode)
 	{
 		given()
@@ -54,9 +68,9 @@ public class CarRestServiceTest {
 			.statusCode(statusCode);
 	}
 
-	public void checkStatusCodeForUpdatingACar(Car carTest, Long cod, int statusCode)
+	public void checkStatusCodeForUpdatingACar(Car carTest, int statusCode)
 	{
-		String updatePath = "/cars/" + cod;
+		String updatePath = "/cars/" + carTest.getCod();
 		
 		given()
 			.header("Accept","application/json")

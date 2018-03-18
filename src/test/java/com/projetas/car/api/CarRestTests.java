@@ -81,6 +81,16 @@ public class CarRestTests {
 	}
 	
 	@Test
+	public void mustUpdateNewCarStatusFromACar()
+	{
+		Car carTestCreated = this.carTest;
+		carTestCreated.setNewCar(false);
+
+		int statusCode = 204;
+		carRestServiceTest.updateNewCarProperty(this.carTest, statusCode);
+	}
+
+	@Test
 	public void mustZDeleteTheCarAdded()
 	{
 		int statusCode = 204;
@@ -109,7 +119,18 @@ public class CarRestTests {
 	public void mustReturnStatusNotFoundWhenTryingToUpdateAnInexistingCar()
 	{
 		int statusCode = 404;
-		carRestServiceTest.checkStatusCodeForUpdatingACar(this.carTest, (long) 500000000, statusCode);
+		Long cod = (long) 500000000; 
+		this.carTest.setCod(cod);
+		carRestServiceTest.checkStatusCodeForUpdatingACar(this.carTest, statusCode);
+	}
+
+	@Test
+	public void mustReturnStatusNotFoundWhenTryingToUpdateNewCarStatusFromACar()
+	{
+		int statusCode = 404;
+		Long cod = (long) 500000000; 
+		this.carTest.setCod(cod);
+		carRestServiceTest.updateNewCarProperty(this.carTest, statusCode);
 	}
 
 	@Test

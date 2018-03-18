@@ -63,6 +63,6 @@ public class CarServiceTest {
 	public void mustFailWhenTryingToUpdateAnInexistCar()
 	{
 		Long cod = (long) 500000000;
-		Car carSearched = carService.updateCar(cod, this.carTest);
+		carService.updateCar(cod, this.carTest);
 	}
 }

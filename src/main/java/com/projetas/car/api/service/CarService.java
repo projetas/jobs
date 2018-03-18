@@ -28,4 +28,10 @@ public class CarService {
 		}
 		return carSaved;
 	}
+
+	public void updateNewCarProperty(Long cod, Boolean newCar) {
+		Car carSaved = searchByCode(cod);
+		carSaved.setNewCar(newCar);
+		carRepository.save(carSaved);
+	}
 }

@@ -66,4 +66,10 @@ public class CarResource {
 		Car carSaved = carService.updateCar(cod, car);
 		return ResponseEntity.ok(carSaved);
 	}
+
+	@PutMapping("/{cod}/newcar")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void atualizarPropriedadeAtivo(@PathVariable Long cod, @RequestBody Boolean newCar) {
+		carService.updateNewCarProperty(cod, newCar);
+	}
 }
