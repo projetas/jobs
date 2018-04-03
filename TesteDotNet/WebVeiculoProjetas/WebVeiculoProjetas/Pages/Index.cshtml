@@ -1,0 +1,220 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">
+                Veículos
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" id="txtSearch">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button id="btnSearch" type="button" class="btn btn-primary btn-default">
+                            Pesquisar
+                        </button>
+                        <a id="new" href="#modalNew" role="button" class="btn btn-info btn-default" data-toggle="modal">
+                            Cadastrar
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="tblVehicle" class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Marca
+                        </th>
+                        <th>
+                            Modelo
+                        </th>
+                        <th>
+                            Cor
+                        </th>
+                        <th>
+                            Ano
+                        </th>
+                        <th>
+                            Preço
+                        </th>
+                        <th>
+                            Descrição
+                        </th>
+                        <th>
+                            É novo?
+                        </th>
+                        <th>
+                            Data de Cadastro
+                        </th>
+                        <th>
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="dataVehicles"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--Modal Editar-->
+<div class="modal fade" id="modalEdit" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Editar
+                </h4>
+            </div>
+            <form id="formUpdate" role="form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="txtMarkEdit">
+                            Marca
+                        </label>
+                        <input type="text" required class="form-control" id="txtMarkEdit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtModelEdit">
+                            Modelo
+                        </label>
+                        <input type="text" required class="form-control" id="txtModelEdit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtColorEdit">
+                            Cor
+                        </label>
+                        <input type="text" required class="form-control" id="txtColorEdit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtYearEdit">
+                            Ano
+                        </label>
+                        <input type="text" onkeyup="OnlyNumber(this);" maxlength="4" required class="form-control" id="txtYearEdit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPriceEdit">
+                            Preço
+                        </label>
+                        <input type="text" required class="form-control" id="txtPriceEdit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescriptionEdit">
+                            Descrição
+                        </label>
+                        <input type="text" class="form-control" id="txtDescriptionEdit" />
+                    </div>
+                    <div class="form-group">
+                        <label for="chkIsNewEdit">
+                            É novo?
+                        </label>
+                        <input id="chkIsNewEdit" class="checkbox" type="checkbox" />
+                    </div>
+                </div>
+                <input type="hidden" id="hdVehicle" value="" />
+                <div class="modal-footer">
+                    <button id="btnCancelEdit" type="button" class="btn btn-default" data-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Modal Novo-->
+<div class="modal fade" id="modalNew" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalLabel1">
+                    Cadastrar
+                </h4>
+            </div>
+            <form id="formCreate" role="form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="txtMark">
+                            Marca
+                        </label>
+                        <input type="text" required class="form-control" id="txtMark" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtModel">
+                            Modelo
+                        </label>
+                        <input type="text" required class="form-control" id="txtModel" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtColor">
+                            Cor
+                        </label>
+                        <input type="text" required class="form-control" id="txtColor" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtYear">
+                            Ano
+                        </label>
+                        <input type="text" required onkeyup="OnlyNumber(this);" maxlength="4" class="form-control" id="txtYear" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPrice">
+                            Preço
+                        </label>
+                        <input type="text" required class="form-control" id="txtPrice" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescription">
+                            Descrição
+                        </label>
+                        <input type="text" class="form-control" id="txtDescription" />
+                    </div>
+                    <div class="form-group">
+                        <label for="chkIsNew">
+                            É novo?
+                        </label>
+                        <input id="chkIsNew" class="checkbox" type="checkbox" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancelCreate" type="button" class="btn btn-default" data-dismiss="modal">
+                        Cancelar
+                    </button>
+                    <button id="btnCreate" type="submit" class="btn btn-primary">
+                        Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

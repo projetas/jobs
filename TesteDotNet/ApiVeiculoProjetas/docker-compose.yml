@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  apiveiculoprojetas:
+    image: apiveiculoprojetas
+    build:
+      context: .
+      dockerfile: ApiVeiculoProjetas/Dockerfile
