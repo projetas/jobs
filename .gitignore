@@ -1,0 +1,21 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/TesteDotNet/ApiVeiculoProjetas/UnitTestApi/bin/Debug/netcoreapp2.0
+/TesteDotNet/ApiVeiculoProjetas/UnitTestApi/obj
+/TesteDotNet/WebVeiculoProjetas/.vs
+/TesteDotNet/WebVeiculoProjetas/obj/Docker
+/TesteDotNet/WebVeiculoProjetas/WebVeiculoProjetas/bin/Debug/netcoreapp2.0
+/TesteDotNet/WebVeiculoProjetas/WebVeiculoProjetas/obj
+/TesteDotNet/ApiVeiculoProjetas/Service/bin/Debug/netcoreapp2.0
+/TesteDotNet/ApiVeiculoProjetas/Service/obj
+/TesteDotNet/ApiVeiculoProjetas/Repository/bin/Debug/netcoreapp2.0
+/TesteDotNet/ApiVeiculoProjetas/Repository/obj
+/TesteDotNet/ApiVeiculoProjetas/obj/Docker
+/TesteDotNet/ApiVeiculoProjetas/Entities/bin/Debug/netcoreapp2.0
+/TesteDotNet/ApiVeiculoProjetas/Entities/obj
+/TesteDotNet/ApiVeiculoProjetas/ApiVeiculoProjetas/bin/Debug/netcoreapp2.0
+/TesteDotNet/ApiVeiculoProjetas/ApiVeiculoProjetas/obj
+*.user
+/TesteDotNet/ApiVeiculoProjetas/.vs/ApiVeiculoProjetas/v15
