@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using ApiVeiculoProjetas.Response;
 using ApiVeiculoProjetas.ViewModel;
@@ -94,9 +93,16 @@ namespace ApiVeiculoProjetas.Controllers
         {
             try
             {
+                var id = 0;
+                var result = _services.GetAll(null);
+                if (result.Count() > 0)
+                {
+                    id = result.Max(x => x.Id) + 1;
+                }
+
                 var entity = new Vehicle
                 {
-                    Id = (_services.GetAll(null).Max(x => x.Id) + 1),
+                    Id = id,
                     Color = viewModel.Color,
                     CreateDate = DateTime.Now,
                     Description = viewModel.Description,

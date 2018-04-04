@@ -13,7 +13,7 @@ namespace Service
         public Services(VehicleContext context)
         {
             _context = context;
-
+            /*
             if (_context.Vehicles.Count() == 0)
             {
                 _context.Vehicles.Add(new Vehicle
@@ -44,6 +44,7 @@ namespace Service
 
                 _context.SaveChanges();
             }
+            */
         }
 
         public List<Vehicle> GetAll(string search)
@@ -70,25 +71,52 @@ namespace Service
             return _context.Vehicles.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public void Save(Vehicle entity)
+        public bool Save(Vehicle entity)
         {
-            _context.Vehicles.Add(entity);
+            try
+            {
+                _context.Vehicles.Add(entity);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public void Update(Vehicle entity)
+        public bool Update(Vehicle entity)
         {
-            _context.Vehicles.Update(entity);
+            try
+            { 
+                _context.Vehicles.Update(entity);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public void Delete(Vehicle entity)
+        public bool Delete(Vehicle entity)
         {
-            _context.Vehicles.Remove(entity);
+            try
+            { 
+                _context.Vehicles.Remove(entity);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
