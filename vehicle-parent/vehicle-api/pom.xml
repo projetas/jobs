@@ -7,7 +7,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>vehicle-controller</artifactId>
+	<artifactId>vehicle-api</artifactId>
 
 	<dependencies>
 	
@@ -34,6 +34,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>vehicle-api</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -41,4 +42,17 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>prod</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>dev</id>
+		</profile>
+	</profiles>
+	
 </project>

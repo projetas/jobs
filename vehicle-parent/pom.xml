@@ -25,7 +25,7 @@
 	</properties>
 	
 	<modules>
-		<module>vehicle-controller</module>
+		<module>vehicle-api</module>
 		<module>vehicle-service</module>
 		<module>vehicle-repository</module>
 		<module>vehicle-support</module>
