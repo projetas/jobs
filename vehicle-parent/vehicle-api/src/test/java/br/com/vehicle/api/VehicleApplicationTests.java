@@ -1,4 +1,4 @@
-package br.projetas.vehicle;
+package br.com.vehicle.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
