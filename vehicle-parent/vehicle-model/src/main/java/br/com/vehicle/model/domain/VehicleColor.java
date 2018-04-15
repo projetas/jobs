@@ -3,11 +3,23 @@ package br.com.vehicle.model.domain;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
-import br.com.vehicle.model.AbstractModel;
+import org.springframework.data.annotation.Id;
 
-public class VehicleColor extends AbstractModel
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode
+@Getter
+@Setter
+@Builder
+public class VehicleColor
 {
+	@Id
 	@NotNull
 	@Max(value = 30)
-	public String color;
+	private String color;
 }

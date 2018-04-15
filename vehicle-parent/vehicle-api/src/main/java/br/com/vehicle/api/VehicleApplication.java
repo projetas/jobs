@@ -2,10 +2,10 @@ package br.com.vehicle.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-@SpringBootApplication
-@ComponentScan(basePackages = { "br.com.vehicle" })
+@SpringBootApplication(scanBasePackages = { "br.com.vehicle" })
+@EnableMongoRepositories(basePackages = { "br.com.vehicle.repository" })
 public class VehicleApplication
 {
 	public static void main(String[] args)

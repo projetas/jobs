@@ -19,16 +19,16 @@ import lombok.ToString;
 public class Message
 {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-	public LocalDateTime timestamp;
-	public String message;
-	public String debugMessage;
-	public Collection<MessageSubError> subErrors;
+	private LocalDateTime timestamp;
+	private String message;
+	private String debugMessage;
+	private Collection<MessageSubError> subErrors;
 
 	@JsonIgnore
-	public I18nMessage i18n;
+	private I18nMessage i18n;
 
 	@JsonIgnore
-	public Object[] args;
+	private Object[] args;
 
 	public Message(final I18nMessage i18nInput, final Object[] argsInput)
 	{

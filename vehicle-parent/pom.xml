@@ -14,7 +14,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.1.RELEASE</version>
-		<relativePath/>
+		<relativePath />
 	</parent>
 
 	<properties>
@@ -23,7 +23,7 @@
 		<java.version>1.8</java.version>
 		<spring.boot.version>2.0.1.RELEASE</spring.boot.version>
 	</properties>
-	
+
 	<profiles>
 		<profile>
 			<id>prod</id>
@@ -33,9 +33,24 @@
 		</profile>
 		<profile>
 			<id>dev</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<exclude>
+									*IntegrationTest.java
+								</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
-	
+
 	<modules>
 		<module>vehicle-api</module>
 		<module>vehicle-service</module>
@@ -43,10 +58,10 @@
 		<module>vehicle-support</module>
 		<module>vehicle-model</module>
 	</modules>
-	
+
 	<dependencyManagement>
 		<dependencies>
-		
+
 			<!-- project dependencies -->
 			<dependency>
 				<groupId>br.projetas.vehicle</groupId>
@@ -68,7 +83,7 @@
 				<artifactId>vehicle-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-		
+
 			<!-- spring -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -86,18 +101,19 @@
 				<version>${spring.boot.version}</version>
 				<scope>test</scope>
 			</dependency>
-						
+
 			<!-- Others -->
 			<dependency>
-			    <groupId>javax.validation</groupId>
-			    <artifactId>validation-api</artifactId>
-			    <version>2.0.1.Final</version>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>2.0.1.Final</version>
 			</dependency>
-		    <dependency>
-		        <groupId>org.projectlombok</groupId>
-		        <artifactId>lombok</artifactId>
-		        <version>1.16.20</version>
-		    </dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.16.20</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

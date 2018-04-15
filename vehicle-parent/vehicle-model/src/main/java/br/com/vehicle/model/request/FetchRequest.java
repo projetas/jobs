@@ -12,7 +12,7 @@ public class FetchRequest<T> extends Request
 {
 	private static final long serialVersionUID = 6700802282272165275L;
 
-	public @NonNull T example;
-	public @NonNull Integer startRow;
-	public @NonNull Integer pageSize;
+	private @NonNull T example;
+	private @NonNull Integer page;
+	private @NonNull Integer size;
 }

@@ -11,7 +11,6 @@ public class VehicleException extends RuntimeException
 
 	public VehicleException(final Message... msgs)
 	{
-
 		for (final Message m : msgs)
 		{
 			messages.add(m);
@@ -20,7 +19,6 @@ public class VehicleException extends RuntimeException
 
 	public void addMessages(final Collection<Message> msgs)
 	{
-
 		if (msgs == null || msgs.isEmpty())
 		{
 			return;

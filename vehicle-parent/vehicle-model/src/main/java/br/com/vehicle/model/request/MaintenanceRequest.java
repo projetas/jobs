@@ -12,5 +12,5 @@ public class MaintenanceRequest<T> extends Request
 {
 	private static final long serialVersionUID = -7698287740608474547L;
 
-	public @NonNull T model;
+	private @NonNull T model;
 }
