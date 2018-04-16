@@ -1,66 +1,73 @@
-# Nome do produto
-> Descrição curta sobre o que seu projeto faz.
+# Vehicle
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+O projeto um API que fornece serviços que permite realizar consultas e cadastros de veículos.
+O sistema permite realizar tanto a persistência de carros bem como marca e cores.
+A arquitetura do projeto foi desenvolvida utilizando springboot como framework base.
+Lombok foi outro framework utilizado para diminuir a verbosidade das classes.
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
+## Pré-requisitos
 
-![](../header.png)
+Para desenvolver:
+* JDK8 +
+* Eclipse
+* Lombok instalado no Eclipse
+* Postman
+
+Para implantar a API:
+* JDK8 +
+* Git
+* Maven
 
 ## Instalação
 
-OS X & Linux:
+### Instalação da API
 
-```sh
-npm install my-crazy-module --save
-```
-
-Windows:
-
-```sh
-edit autoexec.bat
-```
+* mkdir Vehicle
+* git clone https://github.com/mnleles/jobs.git Vehicle
+* cd Vehicle/vehicle-parent
+* mvn clean install
+* java -jar vehicle-api/target/vehicle-api.jar
 
 ## Exemplo de uso
 
-Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado. Adicione blocos de códigos e, se necessário, screenshots.
+Abra o Postman e importe a collection:
+* Vehicle/vehicle-parent/development-stuff/VehiclePostman.json
 
 ## Configuração para Desenvolvimento
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
+### Pre requisitos
 
-```sh
-make install
-npm test
-```
+1. Instalar JDK8
+	Link: http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html
+
+2. Instalar Eclipse
+	Link: https://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/oxygen3a
+	Import o java code formatter localizado na pasta: 
+	* Vehicle/vehicle-parent/development-stuff/eclipse-config/code-formatter.xml
+	
+3. Instalar Lombok no eclipse 
+	Execute na pasta do projeto: 
+	* java -jar Vehicle/vehicle-parent/development-stuff/eclipse-config/java -jar lombok.jar
+
+4. Instalar Git
+	Link: https://git-scm.com/downloads
+
+5. Instalar Maven
+	Link:  https://maven.apache.org/download.cgi
+	Descompacte o arquivo e crie uma variável de ambiente do sistema operacional.
+
+6. Postman
+	Link: https://www.getpostman.com/apps
 
 ## Histórico de lançamentos
 
-* 0.2.1
-    * MUDANÇA: Atualização de docs (código do módulo permanece inalterado)
-* 0.2.0
-    * MUDANÇA: Remove `setDefaultXYZ()`
-    * ADD: Adiciona `init()`
-* 0.1.1
-    * CONSERTADO: Crash quando chama `baz()` (Obrigado @NomeDoContribuidorGeneroso!)
-* 0.1.0
-    * O primeiro lançamento adequado
-    * MUDANÇA: Renomeia `foo()` para `bar()`
-* 0.0.1
-    * Trabalho em andamento
+* 0.0.1-SNAPSHOT
+	* Starting project.
+	* Improving structure, it was added database connection, profiles and development stuffs.
+	* It was added structure to handle exceptions and to validate data
+	* It was implemented repository, service, rest and integrated tests.
+	* It was improve code and it implemented junits tests.
 
 ## Meta
 
-Seu Nome – [@SeuNome](https://twitter.com/...) – SeuEmail@exemplo.com
-
-Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
-
-[https://github.com/yourname/github-link](https://github.com/othonalberto/)
-
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+Nome: Marcos Nasário (mnleles@gmail.com)
