@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.vehicle.model.domain.VehicleColor;
 import br.com.vehicle.repository.VehicleColorRepository;
 import br.com.vehicle.service.VehicleColorService;
+import br.com.vehicle.support.validation.BeanValidator;
 import br.com.vehicle.support.validation.Check;
 
 @Service
@@ -26,18 +27,23 @@ public class VehicleColorServiceImpl implements VehicleColorService
 	@Autowired
 	private VehicleColorRepository colorRepository;
 
+	@Autowired
+	private BeanValidator validator;
+	
 	@Override
 	public VehicleColor insert(String color)
 	{
-		Check.isNotEmpty(color, MSG_REQUIRED, VEHICLE_COLOR);
+		VehicleColor vehicleColor = VehicleColor.builder().color(cleanText(color, true)).build();
+		validator.validate(vehicleColor);
 		Check.isFalse(colorRepository.findById(color).isPresent(), MSG_ALREADY_EXIST, VEHICLE_COLOR, color);
-		return colorRepository.insert(VehicleColor.builder().color(cleanText(color, true)).build());
+		return colorRepository.insert(vehicleColor);
 	}
 
 	@Override
 	public void delete(String color)
 	{
-		Check.isNotEmpty(color, MSG_REQUIRED, VEHICLE_COLOR);
+		VehicleColor vehicleColor = VehicleColor.builder().color(cleanText(color, true)).build();
+		validator.validate(vehicleColor);
 		colorRepository.deleteById(cleanText(color, true));
 	}
 

@@ -36,9 +36,21 @@ public class Message
 		i18n = i18nInput;
 		args = argsInput;
 	}
+	
+	public Message(final String messageInput, final Object[] argsInput)
+	{
+		timestamp = LocalDateTime.now();
+		message = messageInput;
+		args = argsInput;
+	}
 
 	public static Message builder(final I18nMessage i18n, final Object... args)
 	{
 		return new Message(i18n, args);
+	}
+	
+	public static Message builder(final String messageInput, final Object... args)
+	{
+		return new Message(messageInput, args);
 	}
 }

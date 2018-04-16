@@ -1,5 +1,16 @@
 package br.com.vehicle.api.rest;
 
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.nio.charset.Charset;
 import java.util.Locale;
 
@@ -21,13 +32,7 @@ import br.com.vehicle.api.VehicleApplication;
 import br.com.vehicle.model.domain.VehicleBrand;
 import br.com.vehicle.repository.VehicleBrandRepository;
 import br.com.vehicle.support.exception.AppCode;
-import br.com.vehicle.support.exception.FailCode;
 import br.com.vehicle.support.handler.I18nHandler;
-
-import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = VehicleApplication.class)
@@ -71,8 +76,7 @@ public class VehicleBrandRestApiIntegrationTest
 	@Test
 	public void insertBrandNullStatus417Test() throws Exception
 	{
-		String brandMsg = i18n.getMessage(AppCode.VEHICLE_BRAND, Locale.getDefault());
-		String message = i18n.getMessage(FailCode.MSG_REQUIRED, Locale.getDefault(), brandMsg);
+		String message = i18n.getMessage("NotBlank.VehicleBrand.brand", Locale.getDefault());
 		
 		String brand = "";
 		mvc.perform(post("/vehicle/brand/api/insert")
@@ -102,8 +106,7 @@ public class VehicleBrandRestApiIntegrationTest
 	@Test
 	public void deleteBrandNullStatus417Test() throws Exception
 	{
-		String brandMsg = i18n.getMessage(AppCode.VEHICLE_BRAND, Locale.getDefault());
-		String message = i18n.getMessage(FailCode.MSG_REQUIRED, Locale.getDefault(), brandMsg);
+		String message = i18n.getMessage("NotBlank.VehicleBrand.brand", Locale.getDefault());
 		
 		String brand = "";
 		insertBrand(brand);

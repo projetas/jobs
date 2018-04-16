@@ -26,6 +26,7 @@ import br.com.vehicle.repository.VehicleRepository;
 import br.com.vehicle.service.VehicleBrandService;
 import br.com.vehicle.service.VehicleColorService;
 import br.com.vehicle.service.VehicleService;
+import br.com.vehicle.support.validation.BeanValidator;
 import br.com.vehicle.support.validation.Check;
 
 @Service
@@ -41,10 +42,14 @@ public class VehicleServiceImpl implements VehicleService
 	@Autowired
 	private VehicleRepository vehicleRepository;
 	
+	@Autowired
+	private BeanValidator validator;
+	
 	@Override
 	public void insert(Vehicle vehicle)
 	{
 		Check.isNotNull(vehicle, MSG_REQUIRED, VEHICLE);
+		validator.validate(vehicle);
 		
 		String model = vehicle.getModel();
 		Example<Vehicle> example = Example.of(new Vehicle(model));
@@ -60,6 +65,7 @@ public class VehicleServiceImpl implements VehicleService
 	public void update(Vehicle vehicle)
 	{
 		Check.isNotNull(vehicle, MSG_REQUIRED, VEHICLE);
+		validator.validate(vehicle);
 
 		String model = vehicle.getModel();
 		Example<Vehicle> example = Example.of(new Vehicle(model));
@@ -74,7 +80,7 @@ public class VehicleServiceImpl implements VehicleService
 	@Override
 	public void delete(String model)
 	{
-		Check.isNotNull(model, MSG_REQUIRED, VEHICLE);
+		Check.isNotEmpty(model, MSG_REQUIRED, VEHICLE);
 
 		Example<Vehicle> example = Example.of(new Vehicle(model));
 		Optional<Vehicle> vehicle = vehicleRepository.findOne(example);
@@ -87,10 +93,10 @@ public class VehicleServiceImpl implements VehicleService
 	public FetchResponse<Vehicle> fetchAll(FetchRequest<Vehicle> request)
 	{
 		PageRequest requestPage = PageRequest.of(request.getPage(), request.getSize());
-		Example<Vehicle> example = Example.of(request.getExample());
-		Page<Vehicle> page = vehicleRepository.findAll(example, requestPage);
-		Check.isTrue(page.hasContent(), MSG_NOT_FOUND, VEHICLE);
+		Example<Vehicle> example = request.getExample() == null ? null : Example.of(request.getExample());
+		Page<Vehicle> page = example == null ? vehicleRepository.findAll(requestPage) : vehicleRepository.findAll(example, requestPage);
 		
+		Check.isTrue(page.hasContent(), MSG_NOT_FOUND, VEHICLE);
 		return FetchResponse.<Vehicle>builder()
 					.results(page.getContent())
 					.page(request.getPage())
@@ -102,7 +108,7 @@ public class VehicleServiceImpl implements VehicleService
 	@Override
 	public Vehicle fetchOne(String model)
 	{
-		Check.isNotNull(model, MSG_REQUIRED, VEHICLE);
+		Check.isNotEmpty(model, MSG_REQUIRED, VEHICLE);
 
 		Example<Vehicle> example = Example.of(new Vehicle(model));
 		Optional<Vehicle> vehicle = vehicleRepository.findOne(example);
@@ -113,14 +119,14 @@ public class VehicleServiceImpl implements VehicleService
 	
 	private VehicleBrand checkBrand(String inputBrand)
 	{
-		Check.isNotNull(inputBrand, MSG_REQUIRED, VEHICLE_BRAND);
+		Check.isNotEmpty(inputBrand, MSG_REQUIRED, VEHICLE_BRAND);
 		VehicleBrand brand = brandService.fetchOne(inputBrand);
 		return brand != null ? brand :  brandService.insert(inputBrand);
 	}
 	
 	private VehicleColor checkColor(String inputColor)
 	{
-		Check.isNotNull(inputColor, MSG_REQUIRED, VEHICLE_COLOR);
+		Check.isNotEmpty(inputColor, MSG_REQUIRED, VEHICLE_COLOR);
 		VehicleColor color = colorService.fetchOne(inputColor);
 		return color != null ? color :  colorService.insert(inputColor);
 	}

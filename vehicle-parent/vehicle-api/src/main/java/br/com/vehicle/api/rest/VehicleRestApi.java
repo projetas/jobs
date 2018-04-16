@@ -33,7 +33,7 @@ import br.com.vehicle.support.handler.I18nHandler;
 public class VehicleRestApi
 {
 	@Autowired
-	private VehicleService vehicleVehicleService;
+	private VehicleService vehicleService;
 
 	@Autowired
 	private I18nHandler i18n;
@@ -42,41 +42,41 @@ public class VehicleRestApi
 	@ResponseBody
 	public ResponseEntity<Response> insert(@RequestBody Vehicle vehicle, WebRequest request)
 	{
-		vehicleVehicleService.insert(vehicle);
+		vehicleService.insert(vehicle);
 		String message = i18n.getMessage(MSG_INSERT_SUCCESS, request.getLocale(), vehicle.getModel());
-		return new ResponseEntity<Response>(Response.builder().message(message).build(), CREATED);
+		return new ResponseEntity<Response>(Response.builder().message(message).statusCode(CREATED.value()).build(), CREATED);
 	}
 
 	@PutMapping("/update")
 	@ResponseBody
 	public ResponseEntity<Response> update(@RequestBody Vehicle vehicle, WebRequest request)
 	{
-		vehicleVehicleService.update(vehicle);
+		vehicleService.update(vehicle);
 		String message = i18n.getMessage(MSG_UPDATE_SUCCESS, request.getLocale(), vehicle.getModel());
-		return new ResponseEntity<Response>(Response.builder().message(message).build(), OK);
+		return new ResponseEntity<Response>(Response.builder().message(message).statusCode(OK.value()).build(), OK);
 	}
 
 	@DeleteMapping("/delete")
 	@ResponseBody
 	public ResponseEntity<Response> delete(@RequestParam("model") String model, WebRequest request)
 	{
-		vehicleVehicleService.delete(model);
+		vehicleService.delete(model);
 		String message = i18n.getMessage(MSG_DELETE_SUCCESS, request.getLocale(), model);
-		return new ResponseEntity<Response>(Response.builder().message(message).build(), OK);
+		return new ResponseEntity<Response>(Response.builder().message(message).statusCode(OK.value()).build(), OK);
 	}
 
 	@GetMapping("/fetch")
 	@ResponseBody
 	public ResponseEntity<FetchResponse<Vehicle>> fetchAllVehicles(@RequestBody FetchRequest<Vehicle> request, WebRequest webRequest)
 	{
-		return new ResponseEntity<FetchResponse<Vehicle>>(vehicleVehicleService.fetchAll(request), OK);
+		return new ResponseEntity<FetchResponse<Vehicle>>(vehicleService.fetchAll(request), OK);
 	}
 
 	@GetMapping("/fetch/model/{model}")
 	@ResponseBody
 	public ResponseEntity<Vehicle> fetchAllByModel(@PathVariable("model") String model, WebRequest webRequest)
 	{
-		return new ResponseEntity<Vehicle>(vehicleVehicleService.fetchOne(model), OK);
+		return new ResponseEntity<Vehicle>(vehicleService.fetchOne(model), OK);
 	}
 
 	@GetMapping("/fetch/brand/{brand}/{page}/{size}")

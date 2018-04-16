@@ -32,7 +32,6 @@ import br.com.vehicle.api.VehicleApplication;
 import br.com.vehicle.model.domain.VehicleColor;
 import br.com.vehicle.repository.VehicleColorRepository;
 import br.com.vehicle.support.exception.AppCode;
-import br.com.vehicle.support.exception.FailCode;
 import br.com.vehicle.support.handler.I18nHandler;
 
 @RunWith(SpringRunner.class)
@@ -77,8 +76,7 @@ public class VehicleColorRestApiIntegrationTest
 	@Test
 	public void insertColorNullStatus417Test() throws Exception
 	{
-		String colorMsg = i18n.getMessage(AppCode.VEHICLE_COLOR, Locale.getDefault());
-		String message = i18n.getMessage(FailCode.MSG_REQUIRED, Locale.getDefault(), colorMsg);
+		String message = i18n.getMessage("NotBlank.VehicleColor.color", Locale.getDefault());
 
 		String color = "";
 		mvc.perform(post("/vehicle/color/api/insert")
@@ -108,8 +106,7 @@ public class VehicleColorRestApiIntegrationTest
 	@Test
 	public void deleteColorNullStatus417Test() throws Exception
 	{
-		String colorMsg = i18n.getMessage(AppCode.VEHICLE_COLOR, Locale.getDefault());
-		String message = i18n.getMessage(FailCode.MSG_REQUIRED, Locale.getDefault(), colorMsg);
+		String message = i18n.getMessage("NotBlank.VehicleColor.color", Locale.getDefault());
 
 		String color = "";
 		insertColor(color);

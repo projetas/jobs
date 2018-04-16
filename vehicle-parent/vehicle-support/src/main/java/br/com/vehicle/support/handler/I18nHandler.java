@@ -18,9 +18,19 @@ public class I18nHandler
 	{
 		return messageSource.getMessage(appCode.getCode(), args, locale);
 	}
+	
+	public String getMessage(String code, Locale locale, Object... args)
+	{
+		return messageSource.getMessage(code, args, locale);
+	}
 
 	public String getMessage(I18nMessage appCode, Locale locale)
 	{
 		return messageSource.getMessage(appCode.getCode(), null, locale);
+	}
+	
+	public String getMessage(String code, Locale locale)
+	{
+		return messageSource.getMessage(code, null, locale);
 	}
 }

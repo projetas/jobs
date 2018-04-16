@@ -17,6 +17,8 @@ import br.com.vehicle.model.domain.VehicleBrand;
 import br.com.vehicle.repository.VehicleBrandRepository;
 import br.com.vehicle.service.VehicleBrandService;
 import static br.com.vehicle.support.handler.TextHandle.*;
+
+import br.com.vehicle.support.validation.BeanValidator;
 import br.com.vehicle.support.validation.Check;
 
 @Service
@@ -26,18 +28,23 @@ public class VehicleBrandServiceImpl implements VehicleBrandService
 	@Autowired
 	private VehicleBrandRepository brandRepository;
 
+	@Autowired
+	private BeanValidator validator;
+	
 	@Override
 	public VehicleBrand insert(String brand)
 	{
-		Check.isNotEmpty(brand, MSG_REQUIRED, VEHICLE_BRAND);
+		VehicleBrand vehicleBrand = VehicleBrand.builder().brand(cleanText(brand, true)).build();
+		validator.validate(vehicleBrand);
 		Check.isFalse(brandRepository.findById(brand).isPresent(), MSG_ALREADY_EXIST, VEHICLE_BRAND, brand);
-		return brandRepository.insert(VehicleBrand.builder().brand(cleanText(brand, true)).build());
+		return brandRepository.insert(vehicleBrand);
 	}
 
 	@Override
 	public void delete(String brand)
 	{
-		Check.isNotEmpty(brand, MSG_REQUIRED, VEHICLE_BRAND);
+		VehicleBrand vehicleBrand = VehicleBrand.builder().brand(cleanText(brand, true)).build();
+		validator.validate(vehicleBrand);
 		brandRepository.deleteById(cleanText(brand, true));
 	}
 

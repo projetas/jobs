@@ -33,7 +33,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
 	{
 		Locale locale = request.getLocale();
 		String sysError = i18n.getMessage(FailCode.SYS_ERROR, locale);
-		if (!Exception.class.isAssignableFrom(VehicleException.class))
+		if (!ex.getClass().isAssignableFrom(VehicleException.class))
 		{
 			return super.handleExceptionInternal(ex, sysError, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
 		}
@@ -47,6 +47,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
 
 		vex.getMessages().stream().forEach(m -> {
 
+			if (m.getMessage() != null && !m.getMessage().isEmpty())
+			{
+				m.setMessage(i18n.getMessage(m.getMessage(), locale, m.getArgs()));
+				return;
+			}
+
 			Object[] args = internationalizeArgs(m.getArgs(), locale);
 			m.setMessage(i18n.getMessage(m.getI18n(), locale, args));
 			if (m.getMessage() == null || m.getMessage().isEmpty())
@@ -57,6 +63,18 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
 
 		return new ResponseEntity<>(vex.getMessages(), HttpStatus.EXPECTATION_FAILED);
 	}
+
+	// @ExceptionHandler
+	// @ResponseStatus(HttpStatus.BAD_REQUEST)
+	// public ResponseEntity<?> handleException(MethodArgumentNotValidException exception) {
+	//
+	// String errorMsg = exception.getBindingResult().getFieldErrors().stream()
+	// .map(DefaultMessageSourceResolvable::getDefaultMessage)
+	// .findFirst()
+	// .orElse(exception.getMessage());
+	//
+	// return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+	// }
 
 	private Object[] internationalizeArgs(Object[] args, Locale locale)
 	{

@@ -6,15 +6,22 @@
 		<artifactId>vehicle-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>vehicle-service</artifactId>
-	
+
 	<dependencies>
 
 		<!-- Project -->
 		<dependency>
 			<groupId>br.projetas.vehicle</groupId>
 			<artifactId>vehicle-repository</artifactId>
+		</dependency>
+
+		<!-- Others -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

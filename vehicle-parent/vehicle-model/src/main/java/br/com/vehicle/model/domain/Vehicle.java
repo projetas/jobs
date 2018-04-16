@@ -2,9 +2,10 @@ package br.com.vehicle.model.domain;
 
 import java.time.LocalTime;
 
-import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
 
@@ -25,8 +26,8 @@ public class Vehicle
 	}
 
 	@Id
-	@NotNull
-	@Max(value = 50)
+	@NotBlank
+	@Size(max = 50)
 	private String model;
 	
 	@NotNull
@@ -51,7 +52,6 @@ public class Vehicle
 	@NotNull
 	private Boolean unused;
 
-	@NotNull
 	private LocalTime registerDate;
 
 	private LocalTime modifiedDate;
