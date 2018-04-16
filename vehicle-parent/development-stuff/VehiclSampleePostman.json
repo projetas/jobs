@@ -1,0 +1,275 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Vehicle",
+		"_postman_id": "81773ca7-1877-967c-605b-0d1b4cfa3d98",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Brand",
+			"description": "",
+			"item": [
+				{
+					"name": "Brand-insert",
+					"request": {
+						"url": "http://localhost:8080/vehicle/brand/api/insert",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brand",
+									"value": "FORD",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Brand-delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/vehicle/brand/api/delete?brand=FORD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle",
+								"brand",
+								"api",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "FORD",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Brand-fetch",
+					"request": {
+						"url": "http://localhost:8080/vehicle/brand/api/fetch",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Color",
+			"description": "",
+			"item": [
+				{
+					"name": "Color-insert",
+					"request": {
+						"url": "http://localhost:8080/vehicle/color/api/insert",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "color",
+									"value": "BRANCA",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Color-delete",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/vehicle/color/api/delete?color=Azul",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"vehicle",
+								"color",
+								"api",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "color",
+									"value": "Azul",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Color-fetch",
+					"request": {
+						"url": "http://localhost:8080/vehicle/color/api/fetch",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle-insert",
+			"request": {
+				"url": "http://localhost:8080/vehicle/api/insert",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n   \"model\":\"Civic\",\r\n   \"brand\":\"HONDA\",\r\n   \"type\":\"CAR\",\r\n   \"color\":\"BRANCA\",\r\n   \"year\":2018,\r\n   \"price\":56000.0,\r\n   \"description\":\"ABS, AirBag, Blutooth\",\r\n   \"unused\":true\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicle-update",
+			"request": {
+				"url": "http://localhost:8080/vehicle/api/update",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n   \"model\":\"New Fiesta\",\r\n   \"brand\":\"FORD\",\r\n   \"type\":\"CAR\",\r\n   \"color\":\"AZUL\",\r\n   \"year\":2018,\r\n   \"price\":56000.0,\r\n   \"description\":\"ABS, AirBag, Blutooth\",\r\n   \"unused\":true\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicle-delete",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/vehicle/api/delete?model=Civic",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicle",
+						"api",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "model",
+							"value": "Civic",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicle-fetch-model",
+			"request": {
+				"url": "http://localhost:8080/vehicle/api/fetch/model/New Fiesta",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicle-fetch-brand",
+			"request": {
+				"url": "http://localhost:8080/vehicle/api/fetch/brand/FORD/0/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicle-fetch-type",
+			"request": {
+				"url": "http://localhost:8080/vehicle/api/fetch/type/CAR/0/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Vehicle-fetch-color",
+			"request": {
+				"url": "http://localhost:8080/vehicle/api/fetch/color/AZUL/0/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
