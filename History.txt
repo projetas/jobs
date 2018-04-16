@@ -1,0 +1,6 @@
+* 0.0.1-SNAPSHOT 
+	* Starting project.
+	* Improving structure, it was added database connection, profiles and development stuffs.
+	* It was added structure to handle exceptions and to validate data
+	* It was implemented repository, service, rest and integrated tests.
+	* It was improve code and it implemented junits tests.
