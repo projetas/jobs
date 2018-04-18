@@ -17,7 +17,7 @@ var CarForm = React.createClass({
     this.loadCarFromServer();
   },
   getInitialState: function () {
-    return {brand:'', model:'', year:'', color:'', isNew:'', price:'', description:''};
+    return {brand:'', model:'', year:'', color:'', isNew:'', price:'', description:'', updatedDate: undefined};
   },
   handleChangeBrand(event) {
     this.setState({brand: event.target.value});
@@ -41,13 +41,15 @@ var CarForm = React.createClass({
     this.setState({description: event.target.value});
   },
   handleSubmit(event) {
+    var url = "car/"+this.state.id;
+    console.log(url);
     $.ajax({
-      url: "car/"+this.state.id,
-      type: 'POST',
+      url: "car/",
+      type: 'PUT',
       data: this.state,
       success: function(result) {
         alert('Atualizado com sucesso');
-        location.reload();
+        window.location.href = '/';
       },
       error: function(xhr, ajaxOptions, thrownError) {
         toastr.error(xhr.responseJSON.message);
@@ -107,7 +109,7 @@ var CarForm = React.createClass({
             </div>
             <div className="col-md-2">
               <br></br>
-              <button type="submit" className="btn btn-primary">Adicionar</button>
+              <button type="submit" className="btn btn-primary">Atualizar</button>
             </div>
           </div>
         </div>

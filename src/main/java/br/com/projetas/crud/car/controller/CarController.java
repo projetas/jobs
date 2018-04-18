@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -58,11 +59,11 @@ public class CarController {
         return "redirect:/";
     }
 
-    @PostMapping("/{id}")
+    @PutMapping
     public @ResponseBody
-    String update(@PathVariable(value = "id") Long id, Car car) throws Exception {
+    String update(Car car) throws Exception {
 
-        this.carService.update(car, id);
+        this.carService.update(car);
         return "redirect:/";
     }
 }

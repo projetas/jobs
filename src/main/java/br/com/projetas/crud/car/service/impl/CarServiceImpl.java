@@ -54,10 +54,10 @@ public class CarServiceImpl implements CarService {
 
     @Override
     @Transactional( readOnly = false, rollbackFor = Exception.class )
-    public Car update(Car car, Long id) throws Exception {
+    public Car update(Car car) throws Exception {
 
         Assert.notNull(car, "Car cannot be null.");
-        Assert.notNull(id, "id cannot be null.");
+        Assert.notNull(car.getId(), "id cannot be null.");
         Assert.hasText(car.getBrand(), "brand cannot be empty.");
         Assert.hasText(car.getModel(), "model cannot be empty.");
         Assert.hasText(car.getColor(), "color cannot be empty.");
@@ -65,10 +65,10 @@ public class CarServiceImpl implements CarService {
         Assert.notNull(car.getPrice(), "Price cannot be null.");
         Assert.notNull(car.getIsNew(), "isNew cannot be null.");
 
-        Car oldCar = carRepository.getOne(id);
+        Car oldCar = carRepository.getOne(car.getId());
 
         if (oldCar == null) {
-            throw new Exception("Not exist car with this Id=" + id);
+            throw new Exception("Not exist car with this Id=" + car.getId());
         }
 
         oldCar.setBrand(car.getBrand());

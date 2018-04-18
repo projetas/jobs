@@ -121,6 +121,7 @@ public class CrudCarApplicationTests {
     public void update() throws Exception {
 
         Car corsa = new Car();
+        corsa.setId(2L);
         corsa.setBrand("CHEVROLET");
         corsa.setModel("CORSA");
         corsa.setColor("BRANCO");
@@ -129,7 +130,7 @@ public class CrudCarApplicationTests {
         corsa.setDescription("Rodas liga leve");
         corsa.setIsNew(false);
 
-        corsa = carService.update(corsa, 2L);
+        corsa = carService.update(corsa);
 
         Car foundCar = carService.findById(2l);
 
