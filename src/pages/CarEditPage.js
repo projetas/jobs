@@ -41,8 +41,7 @@ var CarForm = React.createClass({
     this.setState({description: event.target.value});
   },
   handleSubmit(event) {
-    var url = "car/"+this.state.id;
-    console.log(url);
+    delete this.state['updatedDate'];
     $.ajax({
       url: "car/",
       type: 'PUT',
