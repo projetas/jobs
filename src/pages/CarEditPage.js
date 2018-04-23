@@ -4,17 +4,21 @@ import toastr from 'toastr';
 
 var CarForm = React.createClass({
 
-  loadCarFromServer: function () {
+  loadCarFromServer: function (idCar) {
     var self = this;
     $.ajax({
-      url: "http://localhost:8090/car/2",
-      dataType: "json"
-    }).then(function (data) {
-      self.setState(data);
+      url: "http://localhost:8090/car/" + idCar,
+      dataType: "json",
+      success: function(data) {
+        self.setState(data);
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        toastr.error(xhr.responseJSON.message);
+      }
     });
   },
   componentDidMount: function () {
-    this.loadCarFromServer();
+    this.loadCarFromServer(this.props.id);
   },
   getInitialState: function () {
     return {brand:'', model:'', year:'', color:'', isNew:'', price:'', description:'', updatedDate: undefined};
@@ -43,7 +47,7 @@ var CarForm = React.createClass({
   handleSubmit(event) {
     delete this.state['updatedDate'];
     $.ajax({
-      url: "car/",
+      url: "http://localhost:8090/car/",
       type: 'PUT',
       data: this.state,
       success: function(result) {
@@ -83,8 +87,10 @@ var CarForm = React.createClass({
             </div>
             <div className="col-md-2">
               <label for="isNew">Novo</label><br/>
-              <input id="isNew" type="text" className="form-control" placeholder="Novo"
-              value={this.state.isNew} onChange={this.handleChangeIsNew} />
+              <select id="isNew"  className="form-control width-100" onChange={this.handleChangeIsNew} value={this.state.isNew}>
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+              </select>
             </div>
             <div className="col-md-2">
               <label for="price">Preço</label><br/>
@@ -120,9 +126,14 @@ var CarForm = React.createClass({
 
 var CarEditPage = React.createClass({
 
+  componentWillMount() {
+    var self = this;
+    const { id } = this.props.match.params;
+    self.setState({idCar: id});
+  },
   render() {
     return (
-      <CarForm />
+      <CarForm id={this.state.idCar}/>
     );
   }
 });
