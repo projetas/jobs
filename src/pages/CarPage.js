@@ -24,7 +24,7 @@ var Car = React.createClass({
     return (
       <tr>
         <td>{this.props.car.brand}</td>
-        <td>{this.props.car.model}</td>
+        <td><a href={"/cars/"+this.props.car.id}>{this.props.car.model}</a></td>
         <td>{this.props.car.year}</td>
         <td>{this.props.car.color}</td>
         <td>{this.props.car.isNew ? 'Sim' : 'Não'}</td>
@@ -118,8 +118,10 @@ var CarForm = React.createClass({
             value={this.state.year} onChange={this.handleChangeYear} />
           <input type="text" className="form-control" placeholder="Cor"
             value={this.state.color} onChange={this.handleChangeColor} />
-          <input type="text" className="form-control" placeholder="Novo"
-            value={this.state.isNew} onChange={this.handleChangeIsNew} />
+          <select className="form-control" onChange={this.handleChangeIsNew} value={this.state.isNew}>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+          </select>
           <input type="text" className="form-control" placeholder="Preço"
             value={this.state.price} onChange={this.handleChangePrice} />
           <button type="submit" className="btn btn-primary">Adicionar</button>
@@ -136,12 +138,15 @@ var CarPage = React.createClass({
     var self = this;
     $.ajax({
       url: "http://localhost:8090/car",
-      dataType: "json"
-    }).then(function (data) {
-      self.setState({cars: data});
+      dataType: "json",
+      success: function(data) {
+        self.setState({cars: data});
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        toastr.error(xhr.responseJSON.message);
+      }
     });
   },
-
   getInitialState: function () {
     return {cars: []};
   },

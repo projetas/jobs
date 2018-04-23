@@ -3,6 +3,8 @@ package br.com.projetas.crud.car.controller;
 
 import br.com.projetas.crud.car.model.Car;
 import br.com.projetas.crud.car.service.CarService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +24,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/car")
 public class CarController {
+
+    private static final Logger logger = LogManager.getLogger(CarController.class);
 
     @Autowired
     private CarService carService;
@@ -46,6 +50,7 @@ public class CarController {
     @PostMapping
     public String salvar(Car car) {
 
+        logger.info("Saving " + car);
         this.carService.save(car);
         return "redirect:/";
     }
@@ -63,6 +68,7 @@ public class CarController {
     public @ResponseBody
     String update(Car car) throws Exception {
 
+        logger.info("Updating " + car);
         this.carService.update(car);
         return "redirect:/";
     }
