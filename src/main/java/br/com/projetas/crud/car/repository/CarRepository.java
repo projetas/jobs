@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Created by joaol on 15/04/18.
  */
-public interface CarRepository extends JpaRepository<Car, Long> {
+public interface CarRepository extends JpaRepository<Car, Long>, CarRepositoryCustom {
 }

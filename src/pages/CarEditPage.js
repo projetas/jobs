@@ -21,7 +21,7 @@ var CarForm = React.createClass({
     this.loadCarFromServer(this.props.id);
   },
   getInitialState: function () {
-    return {brand:'', model:'', year:'', color:'', isNew:'', price:'', description:'', updatedDate: undefined};
+    return {brand:'', model:'', year:'', color:'', isNew:false, price:'', description:'', updatedDate: undefined};
   },
   handleChangeBrand(event) {
     this.setState({brand: event.target.value});

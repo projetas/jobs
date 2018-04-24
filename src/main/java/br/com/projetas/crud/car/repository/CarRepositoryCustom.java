@@ -1,21 +1,18 @@
-package br.com.projetas.crud.car.service;
+package br.com.projetas.crud.car.repository;
+
 
 import br.com.projetas.crud.car.model.Car;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface CarService {
 
-    Car save(Car car);
-
-    Car findById(Long id);
-
-    List<Car> findAll();
+/**
+ * Created by joaol on 15/04/18.
+ */
+public interface CarRepositoryCustom {
 
     List<Car> findByFilter(String brand, String model, String color, Long maxYear, Long minYear, Float maxPrice, Float minPrice, Boolean isNew);
 
-    void delete (Long id);
-
-    Car update (Car car) throws Exception;
 
 }

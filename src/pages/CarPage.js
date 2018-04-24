@@ -41,6 +41,29 @@ var Car = React.createClass({
 
 
 var CarTable = React.createClass({
+  getInitialState: function() {
+    var save = function (objectSave) {
+      //console.log(objectSave);
+      $.ajax({
+        url: "car/",
+        type: 'POST',
+        data: objectSave,
+        success: function(result) {
+          alert('Adicionado com sucesso');
+          location.reload();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          toastr.error(xhr.responseJSON.message);
+        }
+      });
+    };
+    var search = function (objectSearch) {
+      alert("busca o que?" + objectSearch);
+      this.setState({cars: []});
+      //console.log(objectSearch);
+    };
+    return {save: save, search: search};
+  },
   render: function() {
     var rows = [];
     this.props.cars.forEach(function(car) {
@@ -48,7 +71,8 @@ var CarTable = React.createClass({
     });
     return (
       <div>
-        <CarForm />
+        <CarForm buttonName={"Adicionar"} functionSubmit={this.state.save}/>
+        <CarForm buttonName={"Buscar"} functionSubmit={this.state.search}/>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -71,7 +95,7 @@ var CarTable = React.createClass({
 
 var CarForm = React.createClass({
   getInitialState: function () {
-    return {brand:'', model:'', year:'', color:'', isNew:'', price:'', description:''};
+    return {brand:'', model:'', year:'', color:'', isNew:false, price:'', description:''};
   },
   handleChangeBrand(event) {
     this.setState({brand: event.target.value});
@@ -92,18 +116,7 @@ var CarForm = React.createClass({
     this.setState({price: event.target.value});
   },
   handleSubmit(event) {
-    $.ajax({
-      url: "car/",
-      type: 'POST',
-      data: this.state,
-      success: function(result) {
-        alert('Adicionado com sucesso');
-        location.reload();
-      },
-      error: function(xhr, ajaxOptions, thrownError) {
-        toastr.error(xhr.responseJSON.message);
-      }
-    });
+    this.props.functionSubmit(this.state);
     event.preventDefault();
   },
   render: function() {
@@ -124,7 +137,7 @@ var CarForm = React.createClass({
           </select>
           <input type="text" className="form-control" placeholder="Preço"
             value={this.state.price} onChange={this.handleChangePrice} />
-          <button type="submit" className="btn btn-primary">Adicionar</button>
+          <button type="submit" className="btn btn-primary">{this.props.buttonName}</button>
         </div>
       </form>
     );

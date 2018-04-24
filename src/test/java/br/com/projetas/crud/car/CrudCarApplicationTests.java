@@ -97,6 +97,42 @@ public class CrudCarApplicationTests {
     }
 
     @Test
+    public void findByFilter() {
+
+        List<Car> allCars = carService.findByFilter(null, null, null, null, null,null, null, null);
+
+        Assert.assertNotNull("allCars cannot be null", allCars);
+        Assert.assertEquals("allcars and initialCars must be equals", allCars, initialCars);
+
+        List<Car> filterIsNewFalse = carService.findByFilter(null, null, null, null, null,null, null, Boolean.FALSE);
+        Assert.assertEquals("filterIsNewFalse must be size = 1",filterIsNewFalse.size(), 1);
+        Assert.assertEquals("filterIsNewFalse and initialCars(0) must be equals", filterIsNewFalse.get(0), initialCars.get(0));
+
+        List<Car> filterIsHonda = carService.findByFilter("HONDA", null, null, null, null,null, null, null);
+        Assert.assertEquals("filterIsHonda must be size = 1",filterIsHonda.size(), 1);
+        Assert.assertEquals("filterIsHonda and initialCars(1) must be equals", filterIsHonda.get(0), initialCars.get(1));
+
+        List<Car> filterIsGol = carService.findByFilter(null, "GOL", null, null, null,null, null, null);
+        Assert.assertEquals("filterIsGol must be size = 1",filterIsGol.size(), 1);
+        Assert.assertEquals("filterIsGol and initialCars(2) must be equals", filterIsGol.get(0), initialCars.get(2));
+
+        List<Car> filterIsNewAndYearGrater2015 = carService.findByFilter(null, null, null, null, null,null, null, Boolean.TRUE);
+        List<Car> compare = new ArrayList<>();
+        compare.add(initialCars.get(1));
+        compare.add(initialCars.get(2));
+        Assert.assertEquals("filterIsNewAndYearGrater2015 must be size = 2",filterIsNewAndYearGrater2015.size(), 2);
+        Assert.assertEquals("filterIsNewAndYearGrater2015 and initialCars(2) must be equals", filterIsNewAndYearGrater2015, compare);
+
+        List<Car> filterPriceGreater50k = carService.findByFilter(null, null, null, null, null,null, 50000F, null);
+        Assert.assertEquals("filterPriceGreater50k must be size = 1",filterPriceGreater50k.size(), 1);
+        Assert.assertEquals("filterPriceGreater50k and initialCars(1) must be equals", filterPriceGreater50k.get(0), initialCars.get(1));
+
+        List<Car> filterPriceLess10k = carService.findByFilter(null, null, null, null, null,10000F, null, null);
+        Assert.assertEquals("filterPriceLess10k must be size = 0",filterPriceLess10k.size(), 0);
+
+    }
+
+    @Test
     public void insert() {
 
         Car car = new Car();

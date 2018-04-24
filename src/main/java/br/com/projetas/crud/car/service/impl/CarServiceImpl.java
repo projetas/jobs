@@ -47,6 +47,22 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    @Transactional( readOnly = true )
+    public List<Car> findByFilter(String brand, String model, String color, Long maxYear, Long minYear, Float maxPrice, Float minPrice, Boolean isNew) {
+
+        List<Car> list = null;
+        if(brand == null && model == null && color == null &&  maxYear == null && minYear == null &&
+                maxPrice == null && minPrice == null && isNew == null ) {
+            list = findAll();
+
+        } else {
+
+            list = carRepository.findByFilter(brand, model, color, maxYear, minYear, maxPrice, minPrice, isNew);
+        }
+        return list;
+    }
+
+    @Override
     public void delete(Long id) {
         Assert.notNull(id, "id cannot be null.");
         carRepository.delete(id);
