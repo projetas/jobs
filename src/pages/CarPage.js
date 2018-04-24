@@ -42,6 +42,7 @@ var Car = React.createClass({
 
 var CarTable = React.createClass({
   getInitialState: function() {
+
     var save = function (objectSave) {
       //console.log(objectSave);
       $.ajax({
@@ -50,17 +51,38 @@ var CarTable = React.createClass({
         data: objectSave,
         success: function(result) {
           alert('Adicionado com sucesso');
-          location.reload();
+          window.location = "/";
         },
         error: function(xhr, ajaxOptions, thrownError) {
           toastr.error(xhr.responseJSON.message);
         }
       });
     };
+
     var search = function (objectSearch) {
-      alert("busca o que?" + objectSearch);
-      this.setState({cars: []});
-      //console.log(objectSearch);
+      var query = "?";
+
+      if(objectSearch.brand != null && !('' == objectSearch.brand) ){
+        query = query + "brand=" + objectSearch.brand + "&";
+      }
+      if(objectSearch.model != null && !('' == objectSearch.model) ){
+        query = query + "model=" + objectSearch.model + "&";
+      }
+      if(objectSearch.color != null && !('' == objectSearch.color) ){
+        query = query + "color=" + objectSearch.color + "&";
+      }
+      if(objectSearch.year != null && !('' == objectSearch.year) ){
+        query = query + "maxYear=" + objectSearch.year + "&";
+      }
+      if(objectSearch.price != null && !('' == objectSearch.price) ){
+        query = query + "maxPrice=" + objectSearch.price + "&";
+      }
+      if(objectSearch.isNew != null && !('' == objectSearch.isNew) ){
+        query = query + "isNew=" + objectSearch.isNew + "&";
+      }
+      query = query.substring(0, query.length -1);
+      alert("redirecionando para os resultados!!!");
+      window.location = "/"+query;
     };
     return {save: save, search: search};
   },
@@ -95,7 +117,7 @@ var CarTable = React.createClass({
 
 var CarForm = React.createClass({
   getInitialState: function () {
-    return {brand:'', model:'', year:'', color:'', isNew:false, price:'', description:''};
+    return {brand:'', model:'', year:'', color:'', isNew:'', price:'', description:''};
   },
   handleChangeBrand(event) {
     this.setState({brand: event.target.value});
@@ -132,6 +154,7 @@ var CarForm = React.createClass({
           <input type="text" className="form-control" placeholder="Cor"
             value={this.state.color} onChange={this.handleChangeColor} />
           <select className="form-control" onChange={this.handleChangeIsNew} value={this.state.isNew}>
+        ]   <option value="">Vazio</option>
             <option value="true">Sim</option>
             <option value="false">Não</option>
           </select>
@@ -149,8 +172,9 @@ var CarPage = React.createClass({
 
   loadCarsFromServer: function () {
     var self = this;
+
     $.ajax({
-      url: "http://localhost:8090/car",
+      url: "http://localhost:8090/car" + this.props.location.search,
       dataType: "json",
       success: function(data) {
         self.setState({cars: data});

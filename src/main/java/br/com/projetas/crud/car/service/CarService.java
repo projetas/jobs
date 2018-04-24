@@ -12,7 +12,7 @@ public interface CarService {
 
     List<Car> findAll();
 
-    List<Car> findByFilter(String brand, String model, String color, Long maxYear, Long minYear, Float maxPrice, Float minPrice, Boolean isNew);
+    List<Car> findByFilter(String brand, String model, String color, Integer maxYear, Integer minYear, Float maxPrice, Float minPrice, Boolean isNew);
 
     void delete (Long id);
 

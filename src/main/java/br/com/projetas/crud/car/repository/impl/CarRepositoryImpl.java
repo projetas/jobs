@@ -26,7 +26,7 @@ public class CarRepositoryImpl implements CarRepositoryCustom {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Car> findByFilter(String brand, String model, String color, Long maxYear, Long minYear, Float maxPrice, Float minPrice, Boolean isNew) {
+    public List<Car> findByFilter(String brand, String model, String color, Integer maxYear, Integer minYear, Float maxPrice, Float minPrice, Boolean isNew) {
 
         Session session = em.unwrap(Session.class);
 

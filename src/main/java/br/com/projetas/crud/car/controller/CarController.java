@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -33,9 +34,23 @@ public class CarController {
 
     @GetMapping
     @ResponseBody
-    public List<Car> listar() {
+    public List<Car> listar(
+            @RequestParam(value="brand", required=false)  String brand,
+            @RequestParam(value="model", required=false)  String model,
+            @RequestParam(value="color", required=false)  String color,
+            @RequestParam(value="maxYear", required=false)  Integer maxYear,
+            @RequestParam(value="minYear", required=false)  Integer minYear,
+            @RequestParam(value="maxPrice", required=false)  Float maxPrice,
+            @RequestParam(value="minPrice", required=false)  Float minPrice,
+            @RequestParam(value="isNew", required=false)  Boolean isNew
 
-        return carService.findAll();
+        ) {
+
+
+        logger.info("Parametros{ brand=" + brand + ", model="+ model + ", color=" + color +
+            ", maxYear=" + maxYear + ", minYear="+  minYear  + ", maxPrice=" + maxPrice +
+            ", minPrice=" + minPrice + ", isNew=" + isNew + "}");
+        return carService.findByFilter(brand, model, color, maxYear, minYear, maxPrice, minPrice, isNew);
 
     }
 

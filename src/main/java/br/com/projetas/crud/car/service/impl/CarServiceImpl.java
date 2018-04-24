@@ -48,7 +48,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     @Transactional( readOnly = true )
-    public List<Car> findByFilter(String brand, String model, String color, Long maxYear, Long minYear, Float maxPrice, Float minPrice, Boolean isNew) {
+    public List<Car> findByFilter(String brand, String model, String color, Integer maxYear, Integer minYear, Float maxPrice, Float minPrice, Boolean isNew) {
 
         List<Car> list = null;
         if(brand == null && model == null && color == null &&  maxYear == null && minYear == null &&
