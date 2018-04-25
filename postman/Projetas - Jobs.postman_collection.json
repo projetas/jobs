@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "f091e3c2-eb72-4455-ac7a-9f810f305dcc",
+		"name": "Projetas - Jobs",
+		"description": "Projetas - Jobs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/vehicles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"brand\":\"Volksvagen\",\n\t\"model\":\"Fusca\",\n\t\"color\":\"Black\",\n\t\"year\":1970,\n\t\"price\":10000,\n\t\"description\":\"\",\n\t\"isNew\":false\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/vehicle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicle",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"brand\":\"Volkswagen\",\n  \"model\":\"Fusca\",\n  \"color\":\"Black\",\n  \"year\":1970,\n  \"price\":10000,\n  \"description\":\"\",\n  \"isNew\":false\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/vehicle",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"brand\":\"Audi\",\n  \"model\":\"R8\",\n  \"color\":\"White\",\n  \"year\":2015,\n  \"price\":300000,\n  \"description\":\"\",\n  \"isNew\":false\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/vehicle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicle",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/vehicle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicle",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
