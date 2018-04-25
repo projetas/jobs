@@ -1,0 +1,16 @@
+C:\Projetas\new\jobs\Projetas\Projetas.API\bin\Debug\netcoreapp2.0\Projetas.API.deps.json
+C:\Projetas\new\jobs\Projetas\Projetas.API\bin\Debug\netcoreapp2.0\Projetas.API.runtimeconfig.json
+C:\Projetas\new\jobs\Projetas\Projetas.API\bin\Debug\netcoreapp2.0\Projetas.API.runtimeconfig.dev.json
+C:\Projetas\new\jobs\Projetas\Projetas.API\bin\Debug\netcoreapp2.0\Projetas.API.dll
+C:\Projetas\new\jobs\Projetas\Projetas.API\bin\Debug\netcoreapp2.0\Projetas.API.pdb
+C:\Projetas\new\jobs\Projetas\Projetas.API\obj\Debug\netcoreapp2.0\Projetas.API.csproj.CoreCompileInputs.cache
+C:\Projetas\new\jobs\Projetas\Projetas.API\obj\Debug\netcoreapp2.0\Projetas.API.AssemblyInfoInputs.cache
+C:\Projetas\new\jobs\Projetas\Projetas.API\obj\Debug\netcoreapp2.0\Projetas.API.AssemblyInfo.cs
+C:\Projetas\new\jobs\Projetas\Projetas.API\obj\Debug\netcoreapp2.0\Projetas.API.dll
+C:\Projetas\new\jobs\Projetas\Projetas.API\obj\Debug\netcoreapp2.0\Projetas.API.pdb
+C:\Projetas\new\jobs\Projetas\Projetas.API\bin\Debug\netcoreapp2.0\Projetas.Domain.dll
+C:\Projetas\new\jobs\Projetas\Projetas.API\bin\Debug\netcoreapp2.0\Projetas.Infra.dll
+C:\Projetas\new\jobs\Projetas\Projetas.API\bin\Debug\netcoreapp2.0\Projetas.Domain.pdb
+C:\Projetas\new\jobs\Projetas\Projetas.API\bin\Debug\netcoreapp2.0\Projetas.Infra.pdb
+C:\Projetas\new\jobs\Projetas\Projetas.API\obj\Debug\netcoreapp2.0\Projetas.API.csprojResolveAssemblyReference.cache
+C:\Projetas\new\jobs\Projetas\Projetas.API\obj\Debug\netcoreapp2.0\Projetas.API.csproj.CopyComplete

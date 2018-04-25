@@ -1,0 +1,46 @@
+﻿@model IEnumerable<VehicleModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="col-md-3">
+    <h2>Vehicles</h2>
+</div>
+<div class="col-md-3 margin-top-20">
+    <a asp-action="Cadastro" class="btn btn-primary pull-right h2">Novo Item</a>
+</div>
+<div id="list" class="row margin-top-100">
+    <div class="table-responsive col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.id)</th>
+                    <th>@Html.DisplayNameFor(model => model.brand)</th>
+                    <th>@Html.DisplayNameFor(model => model.model)</th>
+                    <th>@Html.DisplayNameFor(model => model.color)</th>
+                    <th>@Html.DisplayNameFor(model => model.year)</th>
+                    <th>@Html.DisplayNameFor(model => model.price)</th>
+                    <th>@Html.DisplayNameFor(model => model.description)</th>
+                    <th class="actions">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.brand)</td>
+                    <td>@Html.DisplayFor(modelItem => item.model)</td>
+                    <td>@Html.DisplayFor(modelItem => item.color)</td>
+                    <td>@Html.DisplayFor(modelItem => item.year)</td>
+                    <td>@Html.DisplayFor(modelItem => item.price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.description)</td>
+                    <td class="actions">
+                        <a class="btn btn-success btn-xs" asp-action="Detalhe" asp-route-id="@item.id">Visualizar</a>
+                        <a class="btn btn-success btn-xs" asp-action="Cadastro" asp-route-id="@item.id">Editar</a>|
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
