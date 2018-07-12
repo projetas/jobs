@@ -49,7 +49,8 @@ public class CarController {
      */
     @GetMapping("/car/{id}")
     public Car getCarById(@PathVariable(value = "id") Long carId) {
-        return carRepository.findById(carId).orElseThrow(() -> new ResourceNotFoundException("Car", "id", carId));
+        return carRepository.findById(carId).
+                orElseThrow(() -> new ResourceNotFoundException("Car", "id", carId));
     }
 
     /**

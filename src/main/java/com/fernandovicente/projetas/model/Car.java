@@ -45,6 +45,11 @@ public class Car implements Serializable {
     @Column(name="Description")
     private String description;
 
+
+    public Car() {
+        super();
+    }
+
     public Long getId() {
         return id;
     }
@@ -135,18 +140,7 @@ public class Car implements Serializable {
         this.description = description;
     }
 
-    public Car(Long id, String brand, String model, String color, Integer year, BigDecimal price, boolean isNew, Date createDate, Date lastUpdate, String description) {
-        this.id = id;
-        this.brand = brand;
-        this.model = model;
-        this.color = color;
-        this.year = year;
-        this.price = price;
-        this.isNew = isNew;
-        this.createDate = createDate;
-        this.lastUpdate = lastUpdate;
-        this.description = description;
-    }
+
 }
 
 
