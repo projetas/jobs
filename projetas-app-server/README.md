@@ -43,7 +43,7 @@ mvn clean test
 
 ## Histórico de lançamentos
 
-* 0.0.1
+* 0.0.1-SNAPSHOT
     * Aplicação inicial - CRUD de veículos.
 
 ## Meta
