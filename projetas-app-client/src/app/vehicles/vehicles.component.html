@@ -1,0 +1,54 @@
+
+<h1 class="display-4 text-center">Veículos</h1>
+<hr>
+
+<div class="row">
+   <div class="col-md-12">
+
+      <a [routerLink]="['../vehicle/new']" class="btn btn-light mb-2" *ngIf="isAdmin">
+         <img src="assets/img/new-icon.png"> Novo registro
+      </a>
+
+      <table class="table table-striped table-hover table-sm text-center">
+         <thead class="thead-dark">
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col" class="text-left">Marca</th>
+               <th scope="col" class="text-left">Modelo</th>
+               <th scope="col">Cor</th>
+               <th scope="col">Ano</th>
+               <th scope="col">Preço</th>
+               <th scope="col">Estado</th>
+               <th scope="col" style="width:1%;">#</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let reg of service.list">
+               <th scope="row">{{ reg.id }}</th>
+               <td class="text-left">{{ reg.brand }}</td>
+               <td class="text-left">{{ reg.model }}</td>
+               <td>{{ reg.color }}</td>
+               <td>{{ reg.year }}</td>
+               <td class="text-right">{{ reg.price | currency:'BRL':true }}</td>
+               <td><span class="badge" [ngClass]="{ 'badge-success': reg.isNew, 'badge-warning': !reg.isNew }">{{ (reg.isNew) ? 'Novo' : 'Usado' }}</span></td>
+               <td nowrap>
+                  <a [routerLink]="['../vehicle/edit', reg.id]" title="Editar" *ngIf="isAdmin">
+                     <img src="assets/img/edit-icon.png">
+                  </a>&nbsp;
+                  <a [routerLink]="['../vehicle/details', reg.id]" title="Detalhar">
+                     <img src="assets/img/details-icon.png">
+                  </a>&nbsp;
+                  <a (click)="onDelete(reg.id)" title="Excluir" *ngIf="isAdmin">
+                     <img src="assets/img/delete-icon.png">
+                  </a>
+               </td>
+            </tr>
+
+            <tr *ngIf="service.list && !service.list.length" >
+               <td colspan="8">Nenhum registro encontrado.</td>
+            </tr>
+         </tbody>
+      </table>
+
+   </div>
+</div>

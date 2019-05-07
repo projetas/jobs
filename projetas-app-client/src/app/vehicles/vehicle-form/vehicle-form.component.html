@@ -1,0 +1,114 @@
+
+<form *ngIf="vehicleForm"  [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" autocomplete="off" novalidate>
+
+   <input type="hidden" formControlName="id" class="form-control" />
+
+   <div class="row">
+      <div class="col-md-12">
+         <h1 class="display-4 text-center">{{ (f.id?.value) ? 'Editar' : 'Novo' }} Veículo</h1>
+         <hr>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-md-6">
+         <div class="form-group">
+            <label for="brand">MARCA</label>
+            <input type="text" formControlName="brand" class="form-control" [ngClass]="{ 'is-invalid': f.brand?.touched && f.brand?.errors }" />
+            <div *ngIf="f.brand?.errors" class="invalid-feedback">
+               <div *ngIf="f.brand?.errors?.required">Este campo é obrigatório.</div>
+               <div *ngIf="f.brand?.errors?.maxlength">Informe no máximo 40 caracteres.</div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6">
+         <div class="form-group">
+            <label for="model">MODELO</label>
+            <input type="text" formControlName="model" class="form-control" [ngClass]="{ 'is-invalid': f.model?.touched && f.model?.errors }" />
+            <div *ngIf="f.model?.errors" class="invalid-feedback">
+               <div *ngIf="f.model?.errors?.required">Este campo é obrigatório.</div>
+               <div *ngIf="f.model?.errors?.maxlength">Informe no máximo 50 caracteres.</div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-md-6">
+         <div class="form-group">
+            <label for="color">COR</label>
+            <input type="text" formControlName="color" class="form-control" [ngClass]="{ 'is-invalid': f.color?.touched && f.color?.errors }" />
+            <div *ngIf="f.color?.errors" class="invalid-feedback">
+               <div *ngIf="f.color?.errors?.required">Este campo é obrigatório.</div>
+               <div *ngIf="f.color?.errors?.maxlength">Informe no máximo 30 caracteres.</div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6">
+         <div class="form-group">
+            <label for="year">ANO</label>
+            <input type="number" formControlName="year" class="form-control" [ngClass]="{ 'is-invalid': f.year?.touched && f.year?.errors }" />
+            <div *ngIf="f.year?.errors" class="invalid-feedback">
+               <div *ngIf="f.year?.errors?.required">Este campo é obrigatório.</div>
+               <div *ngIf="f.year?.errors?.min || f.year?.errors?.max || f.year?.errors?.minlength">Informe um valor válido para este campo.</div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-md-6">
+         <div class="form-group">
+            <label for="price">PREÇO</label>
+            <input type="number" formControlName="price" step="0.01" class="form-control" [ngClass]="{ 'is-invalid': f.price?.touched && f.price?.errors }" />
+            <div *ngIf="f.price?.errors" class="invalid-feedback">
+               <div *ngIf="f.price?.errors?.required">Este campo é obrigatório.</div>
+               <div *ngIf="f.price?.errors?.min">Informe um valor válido para este campo.</div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6">
+         <div class="form-group">
+            <label> VEÍCULO NOVO? </label>
+            <div>
+               <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                     <input class="form-check-input" type="radio" formControlName="isNew" [value]="true"> Sim
+                  </label>
+               </div>
+               <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                     <input class="form-check-input" type="radio" formControlName="isNew" [value]="false"> Não
+                  </label>
+               </div>
+            </div>
+            <div *ngIf="f.isNew?.errors" class="invalid-feedback">
+               <div *ngIf="f.isNew?.errors?.required">Este campo é obrigatório.</div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-md-12">
+         <div class="form-group">
+            <label for="description">DESCRIÇÃO</label>
+            <textarea formControlName="description" class="form-control"></textarea>
+         </div>
+      </div>
+   </div>
+
+   <div class="form-group text-left">
+      <span class="badge badge-info" *ngIf="f.saveDate?.value">Criado em: {{ f.saveDate?.value | date:'medium' }}<br /></span> &nbsp; 
+      <span class="badge badge-info" *ngIf="f.updateDate?.value">Atualizado em: {{ f.updateDate?.value | date:'medium' }}<br /></span>
+   </div>
+
+   <div class="form-group text-right">
+      <button type="submit" class="btn btn-success" [disabled]="vehicleForm.invalid || submitted"> {{ (f.id?.value) ? 'ATUALIZAR' : 'SALVAR' }}
+         <img *ngIf="submitted" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      </button> 
+      &nbsp; 
+      <button type="button" class="btn btn-secondary" (click)="redirectToVehicles()">CANCELAR</button>
+   </div>
+
+</form>
